@@ -1,0 +1,92 @@
+.main {
+  background-color: rgba(251, 244, 229, 0.418);
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.header {
+  position: absolute;
+  background-color: aliceblue;
+  width: 100%;
+  height: 64px;
+  background-image: url("../../public/background/linemap_png.png");
+  opacity: 0.5;
+  z-index: 5;
+
+  ul {
+    justify-content: center;
+    display: flex;
+    li {
+      padding: 0 25px;
+      text-transform: uppercase;
+      border-right: 1px solid #000;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+}
+
+// 1
+.icons {
+  position: absolute;
+  z-index: 5;
+  // left: 22px;
+
+  ul {
+    height: 20px;
+    min-width: 23px;
+    display: flex;
+    gap: 45px;
+
+    li {
+      transition: 0.5s;
+      cursor: pointer;
+    }
+  }
+}
+
+.aside {
+  position: absolute;
+  right: 0;
+  width: 65px;
+  height: 100vh;
+  box-shadow: 0px 0px 8px black;
+  background-image: url("../../public/background/linemap_png.png");
+  background-position: center 64px;
+  background-repeat: repeat;
+  background-color: rgba(0, 0, 0, 0.045);
+  transition: 0.4s;
+  z-index: 6;
+
+  &:hover {
+    width: 320px;
+  }
+
+  .block {
+  }
+}
+
+.section {
+  position: absolute;
+  left: 17px;
+  bottom: 17px;
+  width: 256px;
+  max-height: 535px;
+
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 8px;
+
+  .one {
+    background-color: rgb(224, 127, 0);
+    height: 270px;
+  }
+
+  .two {
+    background-color: rgb(224, 127, 0);
+    height: 257px;
+  }
+}
