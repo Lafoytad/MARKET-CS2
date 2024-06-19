@@ -1,0 +1,27 @@
+.icons {
+  position: absolute;
+  z-index: 5;
+
+  ul {
+    height: 20px;
+    min-width: 23px;
+    display: flex;
+    gap: 45px;
+    display: flex;
+
+    li {
+      transition: 0.2s;
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.home {
+  background-image: url("/icons/home_icon_png.png");
+
+  &:hover {
+    background-image: url("/icons/home_icon_pngHover.png");
+  }
+}

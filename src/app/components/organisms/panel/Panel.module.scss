@@ -1,0 +1,21 @@
+.section {
+  position: absolute;
+  left: 17px;
+  bottom: 17px;
+  width: 256px;
+  max-height: 535px;
+
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 8px;
+
+  .one {
+    background-color: rgb(224, 127, 0);
+    height: 270px;
+  }
+
+  .two {
+    background-color: rgb(224, 127, 0);
+    height: 257px;
+  }
+}

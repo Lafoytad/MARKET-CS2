@@ -62,6 +62,12 @@ select {
   font: inherit;
 }
 
+/* Сбросили стили для a */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -70,4 +76,12 @@ select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+main {
+  background-image: url("/menu/mainV2.jpg");
+  background-size: 100%;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
 }

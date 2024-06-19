@@ -1,0 +1,46 @@
+.ul {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  display: flex;
+
+  li {
+    overflow: hidden;
+    position: relative;
+    padding: 14px 0px;
+    transition: 0.2s;
+    font-size: 23px;
+    text-shadow: 0px 0px 10px #adadad;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+
+    & a {
+      padding: 0px 25px;
+    }
+
+    &:not(:last-child) a {
+      border-right: 1px solid #ffffff;
+    }
+
+    &:hover .video {
+      opacity: 0.3;
+    }
+
+    & .video {
+      z-index: -1;
+      opacity: 0.1;
+      height: 63px;
+      width: 100%;
+      transform: scale(4);
+      top: -10px;
+      left: 0;
+      position: absolute;
+      transition: 0.5s;
+
+      &:nth-child(1) {
+        width: 100%;
+      }
+    }
+  }
+}

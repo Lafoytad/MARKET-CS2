@@ -1,0 +1,35 @@
+.aside {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 65px;
+  height: 100vh;
+  box-shadow: 0px 0px 8px black;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+
+  background-position: center 64px;
+  background-repeat: repeat;
+  background-color: rgba(0, 0, 0, 0.045);
+  transition: 0.4s;
+  z-index: 6;
+
+  & .background {
+    width: 65px;
+    height: 100vh;
+    background-image: url("../../../../../public/background/linemap_png.png");
+    transition: 0.4s;
+    opacity: 0.1;
+
+    &:hover {
+      width: 320px;
+    }
+  }
+
+  &:hover {
+    width: 320px;
+  }
+
+  .block {
+  }
+}

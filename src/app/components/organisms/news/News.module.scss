@@ -1,0 +1,95 @@
+.background {
+  position: relative;
+
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  width: 100vw;
+  height: calc(100vh - 64px);
+  position: fixed;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  padding: 42px 240px 42px 200px;
+  text-shadow: 0px 0px 10px #adadad;
+  color: rgb(255, 255, 255);
+  transition: 0.4s;
+
+  &:hover {
+    background-color: #0000007e;
+  }
+
+  &:first-child {
+    background-color: #00000069;
+    padding: 38px 200px;
+
+    &:hover {
+      background-color: #0000007e;
+    }
+
+    & .fone {
+      height: 424px;
+    }
+  }
+
+  &:first-child a {
+    height: 348px;
+    width: 70%;
+  }
+
+  a {
+    height: 187px;
+    width: 29%;
+  }
+
+  &:first-child img {
+    height: 348px;
+    width: 100%;
+  }
+
+  img {
+    height: 187px;
+    width: 100%;
+  }
+}
+
+.fone {
+  left: 0px;
+  top: 0;
+  opacity: 0.1;
+  position: absolute;
+  width: 100vw;
+  height: 272px;
+  background-image: url("/background/bluedots_large.png");
+  z-index: -1;
+}
+
+.column {
+  width: 100%;
+  padding-left: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  & .title {
+    font-size: 25px;
+  }
+
+  & .text {
+    padding: 15px 0;
+    font-size: 18px;
+  }
+
+  & .author {
+    font-size: 20px;
+    position: absolute;
+    right: 220px;
+    bottom: 30px;
+  }
+}
