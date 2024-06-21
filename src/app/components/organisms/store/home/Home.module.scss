@@ -1,0 +1,42 @@
+@import "/src/app/basicStyles/basic";
+@import "/src/app/basicStyles/mixin";
+
+.column {
+  position: absolute;
+  top: calc(58px + 15px);
+  left: calc(50% - 65px);
+  transform: translateX(-50%);
+  max-width: 1120px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  & .containerThree {
+    @include container();
+    background-image: url("/background/store_home_tournament.png");
+
+    & .content {
+      width: calc(100% - 22px - 30px);
+      height: calc(100% - 30px - 22px);
+      // background-color: #5c5a56;
+      margin: 30px 22px 22px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      & .title {
+        color: white;
+        width: 150px;
+        font-size: 30px;
+        text-transform: uppercase;
+      }
+
+      & .wrapper {
+        display: flex;
+        gap: 15px;
+      }
+    }
+  }
+}

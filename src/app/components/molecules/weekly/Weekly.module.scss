@@ -1,0 +1,100 @@
+@import "/src/app/basicStyles/mixin";
+
+.container {
+  @include container();
+  background-image: url("/background/weekly_rewards.png");
+  display: flex;
+
+  & .wrapper {
+    height: 247px;
+    display: flex;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    gap: 25px;
+    margin: 0 50px;
+
+    & .item {
+      width: 143px;
+      height: 100%;
+      backdrop-filter: blur(5px);
+      box-shadow: 0px 0px 0px 5px #5c5a56;
+
+      & .fone {
+        background-color: #5c5a56;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0.1;
+        z-index: -1;
+        background-image: url("/background/bluedots_large.png");
+      }
+
+      & .image {
+        margin-top: 35px;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        height: 30%;
+        background-color: #5c5a56; // тут должна быть картинка вместо этого
+      }
+
+      & .text {
+        color: white;
+        position: relative;
+        font-size: 12px;
+        bottom: 0px;
+        padding: 40px 10px;
+      }
+    }
+  }
+
+  & .column {
+    margin-top: 28px;
+    max-width: 285px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & .title {
+      font-size: 30px;
+      color: white;
+      text-transform: uppercase;
+    }
+
+    & .subtitle {
+      padding: 2px;
+      text-align: center;
+      margin-top: 30px;
+      font-size: 17px;
+      color: white;
+      height: 34px;
+      width: 280px;
+      transform: scale(0.9);
+      background-image: url("/background/line.png");
+      background-repeat: no-repeat;
+    }
+
+    & .txt {
+      width: 85%;
+      margin-top: 15px;
+      display: inline-block;
+      font-size: 15px;
+      color: orange;
+    }
+
+    & .wrap {
+      display: flex;
+      justify-content: center;
+      width: 305px;
+      gap: 15px;
+      margin-top: 15px;
+
+      & img {
+        align-self: center;
+        background-color: #5c5a56; // вместо этого должна быть 3 картинки
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+@import "/src/app/basicStyles/mixin";
+
+.container {
+  @include container();
+  // background-image: url("/background/store_home_coupon.png");
+
+  & .more {
+    display: flex;
+    gap: 1px;
+    position: absolute;
+    right: 0;
+    width: 40px;
+    height: 10px;
+    margin: 7px 15px;
+    transition: 0.1s;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+
+    & img {
+      position: relative;
+      top: 2px;
+    }
+
+    & .text {
+      margin-right: 7px;
+      font-size: 10px;
+      color: white;
+    }
+  }
+
+  & .content {
+    width: calc(100% - 22px - 30px);
+    height: calc(100% - 30px - 22px);
+    // background-color: #5c5a56;
+    margin: 30px 22px 22px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & .title {
+      color: white;
+      width: 150px;
+      font-size: 30px;
+      text-transform: uppercase;
+    }
+
+    & .wrapper {
+      display: flex;
+      gap: 15px;
+    }
+  }
+}

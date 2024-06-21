@@ -11,7 +11,7 @@ export default function HeaderMiddle() {
         </video>
       </li>
       <li>
-        <Link href="/store">Магазин</Link>
+        <Link href="/store/home">Магазин</Link>
         <video className={styles.video} autoPlay muted loop>
           <source src="/video/GlareHover.mp4" type="video/mp4" />
         </video>
