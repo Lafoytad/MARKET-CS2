@@ -15,7 +15,12 @@
     color: rgb(255, 255, 255);
     text-transform: uppercase;
 
+    & .active {
+      color: #00b7ffb4;
+    }
+
     & a {
+      // color: #00b7ffb4;
       padding: 0px 25px;
     }
 

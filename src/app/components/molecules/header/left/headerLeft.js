@@ -10,7 +10,10 @@ export default function HeaderLeft() {
     <div className={styles.icons}>
       <ul>
         <li onClick={() => router.push("/")} className={styles.home}></li>
-        <li className={styles.home}></li>
+        <li
+          onClick={() => router.push("/settings")}
+          className={styles.settings}
+        ></li>
       </ul>
     </div>
   );

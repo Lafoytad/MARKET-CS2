@@ -1,0 +1,13 @@
+@import "/src/app/basicStyles/basic";
+// @import "/src/app/basicStyles/mixin";
+
+.wrapper {
+  position: absolute;
+  left: calc(50%);
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 20px;
+  padding-bottom: 10px;
+}

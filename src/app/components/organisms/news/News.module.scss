@@ -1,5 +1,9 @@
 @import "/src/app/basicStyles/basic";
 
+.background {
+  overflow-y: scroll;
+}
+
 .wrapper {
   position: relative;
   display: flex;

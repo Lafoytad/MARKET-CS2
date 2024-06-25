@@ -1,0 +1,14 @@
+.item {
+  & a {
+    border-radius: 4px;
+    padding: 5px 8px;
+    transition: 0.2s;
+    &:hover {
+      background-color: rgba(54, 184, 236, 0.212);
+    }
+  }
+
+  & .active {
+    background-color: #00b7ffb4;
+  }
+}

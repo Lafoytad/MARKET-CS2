@@ -22,9 +22,17 @@
 }
 
 .home {
-  background-image: url("/icons/home_icon_png.png");
+  background-image: url("/icons/home_icon.png");
 
   &:hover {
-    background-image: url("/icons/home_icon_pngHover.png");
+    background-image: url("/icons/home_iconHover.png");
+  }
+}
+
+.settings {
+  background-image: url("/icons/settings_icon.png");
+  &:hover {
+    transform: rotate(60deg);
+    background-image: url("/icons/settings_iconHover.png");
   }
 }

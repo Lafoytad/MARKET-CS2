@@ -1,0 +1,81 @@
+@import "/src/app/basicStyles/basic";
+// @import "/src/app/basicStyles/mixin";
+
+.background {
+  overflow-y: scroll;
+}
+
+.dropdown {
+  z-index: 2;
+  position: relative;
+  left: calc(48%);
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  gap: 20px;
+  margin-top: 5px;
+  padding-bottom: 10px;
+  margin-right: 50px;
+
+  display: flex;
+  justify-content: flex-end;
+  color: aliceblue;
+
+  & .block {
+    cursor: pointer;
+    position: relative;
+    background-color: #27272744;
+    border-radius: 7px;
+    border: 1px solid beige;
+    width: 174px;
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+
+    & .textMain {
+      padding: 6px 10px;
+      font-size: 16px;
+    }
+
+    & img {
+      right: 5px;
+      text-align: center;
+      margin-right: 10px;
+      // transform: rotate(90deg);
+    }
+
+    & .blockTwo {
+      border-radius: 5px;
+      padding: 10px;
+      position: absolute;
+      background-color: #272727;
+      top: 115%;
+      width: 150px;
+
+      & p {
+        font-size: 14px;
+        padding: 10px 10px;
+
+        &:hover {
+          background-color: #6d4c4c;
+        }
+      }
+    }
+  }
+}
+
+.wrapper {
+  position: absolute;
+  left: calc(48%);
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 95%;
+  gap: 20px;
+  margin-top: 15px;
+  padding-bottom: 10px;
+  margin-right: 50px;
+}

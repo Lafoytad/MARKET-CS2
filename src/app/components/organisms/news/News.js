@@ -13,7 +13,7 @@ export default function News() {
   }, []);
 
   async function fetchData() {
-    const res = await fetch("/api");
+    const res = await fetch("/api/news");
     const data = await res.json();
     setNews(data);
   }

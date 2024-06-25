@@ -1,7 +1,5 @@
 import styles from "./Home.module.scss";
-import MainHeader from "@/app/components/molecules/mainHeader/MainHeader";
-import Image from "next/image";
-import Picture from "/public/background/static.jpg";
+import MainHeader from "@/app/components/molecules/storeHeader/StoreHeader";
 import Weekly from "@/app/components/molecules/weekly/Weekly";
 import NewsAndPopulars from "@/app/components/molecules/newsAndPopulars/NewsAndPopulars";
 
@@ -14,11 +12,13 @@ export default function Home() {
         <Weekly />
 
         <NewsAndPopulars
+          path={"/store/market"}
           img={"/background/store_home_coupon.png"}
           title={"Новое и популярное"}
         />
 
         <NewsAndPopulars
+          path={"/store/copenhagen"}
           img={"/background/store_home_tournament.png"}
           title={"Копенгаген-2024"}
         />
