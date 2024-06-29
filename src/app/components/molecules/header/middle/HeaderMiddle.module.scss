@@ -29,12 +29,12 @@
     }
 
     &:hover .video {
-      opacity: 0.3;
+      opacity: 0.5;
     }
 
     & .video {
       z-index: -1;
-      opacity: 0.1;
+      opacity: 0.2;
       height: 63px;
       width: 100%;
       transform: scale(4);

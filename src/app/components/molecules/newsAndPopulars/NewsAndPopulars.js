@@ -20,7 +20,6 @@ export default function NewsAndPopulars(props) {
     const res = await fetch("/api/data");
     const data = await res.json();
     setItems(data.items);
-    console.log(data.items);
   }
 
   const firstFiveItemsNewAndPopular = items.slice(0, 5);
@@ -52,6 +51,7 @@ export default function NewsAndPopulars(props) {
                   price={price}
                   rarity={rarity}
                   width={150}
+                  // items={items}
                 />
               )
             )}

@@ -67,8 +67,9 @@
       justify-content: space-between;
 
       & .price {
-        color: green;
-        font-size: 15px;
+        padding-left: 3px;
+        color: rgb(0, 194, 0);
+        font-size: 16px;
       }
 
       & .discount {
@@ -93,7 +94,7 @@
           }
 
           & .newPrice {
-            color: green;
+            color: rgb(0, 194, 0);
             font-size: 12px;
           }
         }
@@ -109,96 +110,6 @@
 
         &:hover {
           background-image: url("/icons/helpHover.png");
-        }
-      }
-    }
-  }
-
-  & .tooltip {
-    position: absolute;
-
-    z-index: 5;
-    top: 97%;
-    background-color: #000000e5;
-
-    & .content {
-      // font-size: 10px;
-      color: #bebebe;
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-
-      & .row {
-        display: flex;
-        align-items: center;
-        & img {
-          width: 34px;
-          height: 40px;
-        }
-
-        & .wrapper {
-          color: #ffffff;
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-          margin-left: 16px;
-          font-size: 12px;
-          // width: 100%;
-          & .name {
-          }
-
-          & .collection {
-          }
-        }
-      }
-
-      & .wrap {
-        border-top: 1px solid white;
-        border-bottom: 1px solid white;
-        padding: 10px 14px;
-        margin-top: 16px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        & ul {
-          font-size: 14px;
-          & li {
-            & span {
-              color: #8f8f8f;
-            }
-
-            & .color {
-              color: #ff0000;
-            }
-          }
-        }
-      }
-
-      & .info {
-        margin-top: 20px;
-        font-size: 12px;
-        & .text {
-        }
-      }
-
-      & .column {
-        margin-top: 25px;
-        font-size: 15px;
-        & .collectionTwo {
-        }
-
-        & ul {
-          position: relative;
-          margin-top: 10px;
-          padding-left: 16px;
-          & li {
-            & span {
-              position: absolute;
-              left: -6px;
-              // top: 50%;
-              transform: translateY(4px);
-            }
-          }
         }
       }
     }
