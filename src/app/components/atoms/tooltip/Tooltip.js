@@ -5,7 +5,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 export default function Tooltip(props) {
-  // props.isHovered/width/X/Y/name/collection/type/rarity/info1/info2/info3/items/icon/
+  // props.isHovered/width/X/Y/name/collection/type/rarity/info1/info2/info3/icon/transition?/itemsTooltip/caseOn?
   const width = props.width || "160";
 
   const colorTooltip = (rarity) => {
@@ -36,18 +36,8 @@ export default function Tooltip(props) {
     return rar;
   };
 
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    setItems(props.items);
-  }, [props.items]);
-
-  useEffect(() => {
-    console.log(props.Y);
-  }, [props.Y]);
-
-  const [XX, setXX] = useState(0); //1 Кординаты x
-  const [YY, setYY] = useState(0); //1 Кординаты y
+  const [XX, setXX] = useState(0);
+  const [YY, setYY] = useState(0);
 
   useEffect(() => {
     if (isHovered) {
@@ -67,31 +57,23 @@ export default function Tooltip(props) {
       // height право
       setYY(props.buttom ? width - props.buttom : width * 1.44);
     }
-  }, [props.X, props.Y]); // 1 Кординаты x и y
+  }, [props.X, props.Y]);
 
-  const hovered = (isHovered) => {
-    setTimeout(() => {
-      setIsHovered(isHovered);
-    }, 1);
-  }; // доп
-
-  const hoveredd = (isHovered) => {
-    setIsHovered(isHovered);
-  }; // доп
+  useEffect(() => {
+    if (props.transition) {
+      setIsHovered(props.isHovered);
+    } else {
+      setHover(props.isHovered);
+    }
+  }, [props.isHovered]); // доп
 
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    setIsHovered(props.isHovered);
-  }, [props.isHovered]); // доп
-
-  useEffect(() => {
-    // console.log(isHovered);
     if (isHovered) {
       const timeoutId = setTimeout(() => {
         setHover(true);
-      }, 700);
-
+      }, props.transition);
       return () => {
         clearTimeout(timeoutId);
       };
@@ -119,10 +101,19 @@ export default function Tooltip(props) {
         <div className={styles.row}>
           <Image width={128} height={99} src={props.icon} alt="Picture" />
           <div className={styles.wrapper}>
-            <p className={styles.name}>{props.name}</p>
-            <p className={styles.collection}>Коллекция {props.collection}</p>
+            {props.collection ? (
+              <div>
+                <p className={styles.name}>{props.name}</p>
+                <p className={styles.collection}>
+                  Коллекция {props.collection}
+                </p>
+              </div>
+            ) : (
+              <p className={styles.name}>{props.type}</p>
+            )}
           </div>
         </div>
+        {/* / */}
         <div className={styles.wrap}>
           <ul>
             <li>
@@ -133,19 +124,28 @@ export default function Tooltip(props) {
                   color: colorTooltip(props.rarity),
                 }}
               >
-                {rars(props.rarity)}
+                {props.caseOn ? "базового класса" : rars(props.rarity)}
               </span>
             </li>
-            <li>
-              <span>Износ:</span> {"Прямо с завода"}
-            </li>
-            <li>
-              <span>Команда:</span> {}
-              {}
-              {"Любая"}
-            </li>
+            {!props.caseOn && props.type !== "Наклейка" ? (
+              <li>
+                <span>Износ:</span> {"Прямо с завода"}
+              </li>
+            ) : (
+              ""
+            )}
+            {!props.caseOn && props.type !== "Наклейка" ? (
+              <li>
+                <span>Команда:</span> {}
+                {}
+                {"Любая"}
+              </li>
+            ) : (
+              ""
+            )}
           </ul>
         </div>
+        {/* / */}
         {props.info1 || props.info2 || props.info3 ? (
           <div className={styles.info}>
             <p className={styles.text}>
@@ -158,36 +158,53 @@ export default function Tooltip(props) {
           ""
         )}
 
-        <div className={styles.column}>
-          <p className={styles.collectionTwo}>Коллекция {props.collection}</p>
-          <ul>
-            {items.map(({ name, collection, rarity, type }, index) =>
-              props.collection == collection ? (
-                <li
-                  style={{
-                    color: colorTooltip(rarity),
-                  }}
-                >
-                  {props.name == name ? (
-                    <span>
-                      <img
-                        src="/icons/star.png"
-                        alt="marker star"
-                        width="14"
-                        height="14"
-                      />
-                    </span>
-                  ) : (
-                    ""
-                  )}
-                  {type} | {name}
-                </li>
+        {props.itemsTooltip ? (
+          <div className={styles.column}>
+            <p className={styles.collectionTwo}>Коллекция {props.collection}</p>
+            <ul
+              style={{
+                ...(!props.caseOn && {
+                  paddingLeft: "16px",
+                }),
+              }}
+              className={styles.topBack}
+            >
+              {props.caseOn ? (
+                <li>Внутри находится один из следующих предметов:</li>
               ) : (
                 ""
-              )
-            )}
-          </ul>
-        </div>
+              )}
+              {props.itemsTooltip.map(
+                ({ name, collection, rarity, type }, index) =>
+                  props.collection == collection ? (
+                    <li
+                      style={{
+                        color: colorTooltip(rarity),
+                      }}
+                    >
+                      {props.name == name ? (
+                        <span>
+                          <img
+                            src="/icons/star.png"
+                            alt="marker star"
+                            width="14"
+                            height="14"
+                          />
+                        </span>
+                      ) : (
+                        ""
+                      )}
+                      {type} | {name}
+                    </li>
+                  ) : (
+                    ""
+                  )
+              )}
+            </ul>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

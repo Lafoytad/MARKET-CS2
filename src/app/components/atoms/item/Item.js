@@ -1,11 +1,11 @@
 import styles from "./Item.module.scss";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Tooltip from "@/app/components/atoms/tooltip/Tooltip";
 
 export default function ItemPrice(props) {
-  // props.path/name/price/info1/info2/info3/rarity/collection/type/width/discount?/X/items/icon
-  const width = props.width || "160";
+  // props.path/name/price/info1/info2/info3/rarity/collection/type/width?/discount?/X/Y/items/icon/transition/itemsTooltip
+  const width = props.width || 160;
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -54,7 +54,7 @@ export default function ItemPrice(props) {
       </div>
       <Tooltip
         isHovered={isHovered}
-        width={props.width}
+        width={width}
         X={props.X}
         Y={props.Y} //NEW
         name={props.name}
@@ -64,10 +64,11 @@ export default function ItemPrice(props) {
         info1={props.info1}
         info2={props.info2}
         info3={props.info3}
-        items={props.items}
         icon={props.icon}
         left={-30}
         buttom={1}
+        transition={props.transition}
+        itemsTooltip={props.itemsTooltip}
       />
     </div>
   );

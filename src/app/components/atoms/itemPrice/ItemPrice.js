@@ -1,11 +1,20 @@
+// "use client";
+
 import styles from "./ItemPrice.module.scss";
 import Image from "next/image";
 import React, { useState } from "react";
 import Tooltip from "@/app/components/atoms/tooltip/Tooltip";
 
+import { valueBuy, vis } from "@/app/store/slice/slice";
+import { useSelector, useDispatch } from "react-redux";
+
 export default function ItemPrice(props) {
-  // props.path/name/price/info1/info2/info3/rarity/collection/type/width/discount?/X/items/icon
-  const width = props.width || "160";
+  // props.path/name/price/info1/info2/info3/rarity/collection/type/width?/discount?/X/Y/icon/caseOn?/itemsTooltip/url?/textUrl?/thing(если оружие)
+
+  // const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
+
+  const width = props.width || 160;
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -23,8 +32,47 @@ export default function ItemPrice(props) {
     return backgroundColor;
   };
 
+  const itemsLocal = () => {
+    const itemJSON = {
+      type: props.type ? props.type : "",
+      name: props.name ? props.name : "",
+      price: props.price,
+      discount: props.discount
+        ? (props.price - props.price * (props.discount / 100)).toFixed(2)
+        : props.price, // есть ли скидка discount
+      rarity: props.rarity ? props.rarity : "",
+      collection: props.collection ? props.collection : "",
+      caseOn: props.caseOn ? props.caseOn : "",
+      path: props.path ? props.path : "",
+      info1: props.info1 ? props.info1 : "",
+      info2: props.info2 ? props.info2 : "",
+      info3: props.info3 ? props.info3 : "",
+      icon: props.icon ? props.icon : "",
+      thing: props.thing ? props.thing : "",
+    };
+
+    const storedItems = JSON.parse(localStorage.getItem("items")) || [];
+
+    const Items = [...storedItems, itemJSON];
+
+    localStorage.setItem("items", JSON.stringify(Items)); // Отправляем на backend Items
+  };
+
   return (
     <div
+      onClick={() => {
+        itemsLocal();
+        dispatch(vis());
+        dispatch(
+          valueBuy({
+            type: props.type ? props.type : "",
+            name: props.name ? props.name : "",
+            price: props.discount
+              ? (props.price - props.price * (props.discount / 100)).toFixed(2)
+              : props.price,
+          })
+        );
+      }}
       style={{
         width: width,
         height: width * 1.46875,
@@ -43,17 +91,28 @@ export default function ItemPrice(props) {
           style={{
             backgroundImage: `url(${props.path})`,
             backgroundColor: color(props.rarity),
+            ...(props.caseOn && {
+              left: "50%",
+              transform: "scale(3)",
+            }),
           }}
           className={styles.topBack}
         ></div>
       </div>
       <div className={styles.bottom}>
         <p className={styles.text}>
-          {props.type} | {props.name}
+          {props.type} {props.name ? ` | ${props.name}` : ""}
         </p>
         <div
           onMouseLeave={() => setIsHovered(false)}
           className={styles.wrapper}
+          style={{
+            ...(props.url || props.textUrl
+              ? {}
+              : {
+                  height: "28px",
+                }),
+          }}
         >
           {props.discount ? (
             <div className={styles.discount}>
@@ -68,6 +127,17 @@ export default function ItemPrice(props) {
                 </p>
               </div>
             </div>
+          ) : props.textUrl || props.url ? (
+            <div>
+              <p className={styles.price}>${props.price}</p>
+              <a
+                onClick={(event) => event.stopPropagation()}
+                href={props.url}
+                target="_blank"
+              >
+                <p className={styles.url}>{props.textUrl}</p>
+              </a>
+            </div>
           ) : (
             <p className={styles.price}>${props.price}</p>
           )}
@@ -79,9 +149,9 @@ export default function ItemPrice(props) {
       </div>
       <Tooltip
         isHovered={isHovered}
-        width={props.width}
+        width={width}
         X={props.X}
-        Y={props.Y} //NEW
+        Y={props.Y}
         name={props.name}
         collection={props.collection}
         type={props.type}
@@ -89,8 +159,9 @@ export default function ItemPrice(props) {
         info1={props.info1}
         info2={props.info2}
         info3={props.info3}
-        items={props.items}
         icon={props.icon}
+        itemsTooltip={props.itemsTooltip}
+        caseOn={props.caseOn}
       />
     </div>
   );

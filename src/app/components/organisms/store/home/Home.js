@@ -15,12 +15,14 @@ export default function Home() {
           path={"/store/market"}
           img={"/background/store_home_coupon.png"}
           title={"Новое и популярное"}
+          item={"items"}
         />
 
         <NewsAndPopulars
           path={"/store/copenhagen"}
           img={"/background/store_home_tournament.png"}
           title={"Копенгаген-2024"}
+          item={"capsules"}
         />
       </div>
     </div>

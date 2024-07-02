@@ -4,9 +4,11 @@ import ItemPrice from "@/app/components/atoms/itemPrice/ItemPrice";
 import styles from "./Market.module.scss";
 import MainHeader from "@/app/components/molecules/storeHeader/StoreHeader";
 import React, { useEffect, useState, useRef } from "react"; // 0 useRef
+import MyNotification from "@/app/components/atoms/notification/notification";
 
 export default function Home() {
   const [items, setItems] = useState([]);
+  const [itemsTooltip, setItemsTooltip] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -16,23 +18,22 @@ export default function Home() {
     const res = await fetch("/api/data");
     const data = await res.json();
     setItems(data.items);
-    // setCases(data.cases);
-    // console.log(data.items);
+    setItemsTooltip(data.items);
   }
 
-  const [X, setX] = useState(""); // 0
-  const [Y, setY] = useState(""); // NEW
+  const [X, setX] = useState("");
+  const [Y, setY] = useState("");
 
-  const blockRef = useRef(null); // 0
+  const blockRef = useRef(null);
 
   const handleMouseMove = (e) => {
     const blockRect = blockRef.current.getBoundingClientRect();
     const x = e.clientX - blockRect.left;
-    const y = e.clientY - blockRect.top; // NEW
+    const y = e.clientY - blockRect.top;
     x > 600 ? setX("right") : setX("left"); // делим на пополам ширину
-    y > 400 ? setY(true) : setY(false); // делим на пополам высоту NEW
+    y > 400 ? setY(true) : setY(false); // делим на пополам высоту
     // console.log(`Координаты внутри блока: x=${x}, y=${y}`);
-  }; // 0
+  };
 
   return (
     <div className={styles.background}>
@@ -44,6 +45,7 @@ export default function Home() {
         className={styles.zoneSkroll}
       >
         <div className={styles.wrapper}>
+          <MyNotification />
           {items.map(
             (
               {
@@ -57,6 +59,8 @@ export default function Home() {
                 collection,
                 type,
                 icon,
+                caseOn,
+                thing,
               },
               index
             ) => (
@@ -71,11 +75,12 @@ export default function Home() {
                 collection={collection}
                 type={type}
                 width={175}
-                discount={50}
                 X={X}
-                Y={Y} //NEW
-                items={items}
+                Y={Y}
                 icon={icon}
+                caseOn={caseOn}
+                itemsTooltip={itemsTooltip}
+                thing={thing}
               />
             )
           )}

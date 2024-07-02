@@ -34,7 +34,7 @@
       left: 0%;
       transform: translate(-50%, -50%);
       background-repeat: no-repeat;
-      // transform: scale(1);
+      // transform: scale(3);
       filter: blur(25px);
       opacity: 0.8;
 
@@ -62,7 +62,7 @@
     }
 
     & .wrapper {
-      height: 28px;
+      // height: 28px;
       display: flex;
       justify-content: space-between;
 
@@ -70,6 +70,17 @@
         padding-left: 3px;
         color: rgb(0, 194, 0);
         font-size: 16px;
+      }
+
+      & .url {
+        padding-left: 3px;
+        color: rgb(150, 150, 150);
+        font-size: 14px;
+        transition: 0.2s;
+
+        &:hover {
+          color: rgb(180, 180, 180);
+        }
       }
 
       & .discount {

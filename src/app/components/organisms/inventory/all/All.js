@@ -4,10 +4,32 @@ import Item from "@/app/components/atoms/item/Item";
 import styles from "./All.module.scss";
 import MainHeader from "@/app/components/molecules/inventoryHeader/inventoryHeader";
 import React, { useEffect, useState, useRef } from "react";
-import Image from "next/image"; // 2
+import Dropdown from "@/app/components/molecules/dropdownAll/dropdownAll";
+import warning from "/public/icons/warning.png";
+import Image from "next/image";
+
+import { useSelector } from "react-redux";
 
 export default function Home() {
+  const dropdownValue = useSelector((state) => state.dropdown.value);
+
   const [items, setItems] = useState([]);
+  const [itemsTooltip, setItemsTooltip] = useState([]);
+
+  const [alphabet, setAlphabet] = useState([]);
+  const [type, setType] = useState([]);
+  const [collection, setСollection] = useState([]);
+
+  useEffect(() => {
+    const storedItems = JSON.parse(localStorage.getItem("items")) || [];
+    setItems(storedItems);
+
+    setAlphabet([...storedItems].sort((a, b) => a.name.localeCompare(b.name))); // сортировка
+    setType([...storedItems].sort((a, b) => a.type.localeCompare(b.type)));
+    setСollection(
+      [...storedItems].sort((a, b) => a.collection.localeCompare(b.collection))
+    );
+  }, []);
 
   useEffect(() => {
     fetchData();
@@ -16,51 +38,28 @@ export default function Home() {
   async function fetchData() {
     const res = await fetch("/api/data");
     const data = await res.json();
-    setItems(data.items);
+    setItemsTooltip(data.items);
   }
 
   const [X, setX] = useState("");
-  const [Y, setY] = useState(""); // NEW
+  const [Y, setY] = useState("");
 
   const blockRef = useRef(null);
 
   const handleMouseMove = (e) => {
     const blockRect = blockRef.current.getBoundingClientRect();
     const x = e.clientX - blockRect.left;
-    const y = e.clientY - blockRect.top; // NEW
+    const y = e.clientY - blockRect.top;
     x > 1400 ? setX("right") : setX("left"); // делим на пополам ширину
-    y > 400 ? setY(true) : setY(false); // делим на пополам высоту NEW
+    y > 400 ? setY(true) : setY(false); // делим на пополам высоту
     // console.log(`Координаты внутри блока: x=${x}, y=${y}`);
-  }; // 0
-
-  const [hidden, setHidden] = useState(true); // 2
-  const [dropdown, setdropdownItems] = useState("По новизне"); // 2
-
-  const dropdownItems = (item) => {
-    setdropdownItems(item);
-    switch (dropdown) {
-      case "По качеству":
-        break;
-
-      case "По алфавиту":
-        break;
-
-      case "По типу":
-        break;
-
-      case "По колекции":
-        break;
-
-      case "По использованию":
-        break;
-
-      default: // "По новизне"
-        break;
-    }
-  }; // 2
+  };
 
   return (
     <div
+      style={{
+        backgroundColor: items.length > 0 ? "" : "rgba(68, 68, 68, 0.384)",
+      }}
       onMouseMove={handleMouseMove}
       ref={blockRef}
       className={styles.background}
@@ -69,61 +68,173 @@ export default function Home() {
 
       <MainHeader />
 
-      <div className={styles.dropdown}>
-        <div onClick={() => setHidden(!hidden)} className={styles.block}>
-          <p className={styles.textMain}>{dropdown}</p>
-          <Image width={18} height={12} src={"/icons/bottom.png"} />
-          <div hidden={hidden} className={styles.blockTwo}>
-            <p onClick={() => dropdownItems("По новизне")}>По новизне</p>
-            <p onClick={() => dropdownItems("По качеству")}>По качеству</p>
-            <p onClick={() => dropdownItems("По алфавиту")}>По алфавиту</p>
-            <p onClick={() => dropdownItems("По типу")}>По типу</p>
-            <p onClick={() => dropdownItems("По колекции")}>По колекции</p>
-            <p onClick={() => dropdownItems("По использованию")}>
-              По использованию
-            </p>
-          </div>
-        </div>
-      </div>
-      {/* 2 */}
+      <Dropdown />
 
-      <div className={styles.wrapper}>
-        {items.map(
-          (
-            {
-              name,
-              price,
-              path,
-              rarity,
-              info1,
-              info2,
-              info3,
-              collection,
-              type,
-              icon,
-            },
-            index
-          ) => (
-            <Item
-              path={path}
-              name={name}
-              price={price}
-              info1={info1}
-              info2={info2}
-              info3={info3}
-              rarity={rarity}
-              collection={collection}
-              type={type}
-              width={175}
-              discount={50}
-              X={X}
-              Y={Y} //NEW
-              items={items}
-              icon={icon}
-            />
-          )
-        )}
-      </div>
+      {items.length > 0 ? (
+        <div className={styles.wrapper}>
+          {dropdownValue == "По новизне"
+            ? items.map(
+                (
+                  {
+                    name,
+                    price,
+                    path,
+                    rarity,
+                    info1,
+                    info2,
+                    info3,
+                    collection,
+                    type,
+                    icon,
+                  },
+                  index
+                ) => (
+                  <Item
+                    path={path}
+                    name={name}
+                    price={price}
+                    info1={info1}
+                    info2={info2}
+                    info3={info3}
+                    rarity={rarity}
+                    collection={collection}
+                    type={type}
+                    width={175}
+                    discount={50}
+                    X={X}
+                    Y={Y}
+                    items={items}
+                    icon={icon}
+                    transition={1000}
+                    itemsTooltip={itemsTooltip}
+                  />
+                )
+              )
+            : ""}
+          {dropdownValue == "По алфавиту"
+            ? alphabet.map(
+                (
+                  {
+                    name,
+                    price,
+                    path,
+                    rarity,
+                    info1,
+                    info2,
+                    info3,
+                    collection,
+                    type,
+                    icon,
+                  },
+                  index
+                ) => (
+                  <Item
+                    path={path}
+                    name={name}
+                    price={price}
+                    info1={info1}
+                    info2={info2}
+                    info3={info3}
+                    rarity={rarity}
+                    collection={collection}
+                    type={type}
+                    width={175}
+                    discount={50}
+                    X={X}
+                    Y={Y}
+                    items={items}
+                    icon={icon}
+                    transition={1000}
+                    itemsTooltip={itemsTooltip}
+                  />
+                )
+              )
+            : ""}
+          {dropdownValue == "По типу"
+            ? type.map(
+                (
+                  {
+                    name,
+                    price,
+                    path,
+                    rarity,
+                    info1,
+                    info2,
+                    info3,
+                    collection,
+                    type,
+                    icon,
+                  },
+                  index
+                ) => (
+                  <Item
+                    path={path}
+                    name={name}
+                    price={price}
+                    info1={info1}
+                    info2={info2}
+                    info3={info3}
+                    rarity={rarity}
+                    collection={collection}
+                    type={type}
+                    width={175}
+                    discount={50}
+                    X={X}
+                    Y={Y}
+                    items={items}
+                    icon={icon}
+                    transition={1000}
+                    itemsTooltip={itemsTooltip}
+                  />
+                )
+              )
+            : ""}
+          {dropdownValue == "По колекции"
+            ? collection.map(
+                (
+                  {
+                    name,
+                    price,
+                    path,
+                    rarity,
+                    info1,
+                    info2,
+                    info3,
+                    collection,
+                    type,
+                    icon,
+                  },
+                  index
+                ) => (
+                  <Item
+                    path={path}
+                    name={name}
+                    price={price}
+                    info1={info1}
+                    info2={info2}
+                    info3={info3}
+                    rarity={rarity}
+                    collection={collection}
+                    type={type}
+                    width={175}
+                    discount={50}
+                    X={X}
+                    Y={Y}
+                    items={items}
+                    icon={icon}
+                    transition={1000}
+                    itemsTooltip={itemsTooltip}
+                  />
+                )
+              )
+            : ""}
+        </div>
+      ) : (
+        <div className={styles.center}>
+          <Image width={30} height={30} src={warning}></Image>
+          <p>Не найдено предметов выбранной категории: Всё.</p>
+        </div>
+      )}
     </div>
   );
 }
