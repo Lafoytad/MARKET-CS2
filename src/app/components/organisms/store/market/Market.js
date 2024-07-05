@@ -1,10 +1,10 @@
 "use client";
 
-import ItemPrice from "@/app/components/atoms/itemPrice/ItemPrice";
 import styles from "./Market.module.scss";
 import MainHeader from "@/app/components/molecules/storeHeader/StoreHeader";
-import React, { useEffect, useState, useRef } from "react"; // 0 useRef
+import React, { useEffect, useState, useRef } from "react";
 import MyNotification from "@/app/components/atoms/notification/notification";
+import ItemPrice from "@/app/components/atoms/itemPrice/ItemPrice";
 
 export default function Home() {
   const [items, setItems] = useState([]);
@@ -65,6 +65,7 @@ export default function Home() {
               index
             ) => (
               <ItemPrice
+                key={index}
                 path={path}
                 name={name}
                 price={price}

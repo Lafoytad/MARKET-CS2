@@ -1,0 +1,104 @@
+.card {
+  position: relative;
+  left: 0px;
+  // padding: 8px;
+  background-color: white;
+  flex: 1;
+  transition: 0.8s ease-in-out;
+  overflow: hidden;
+  overflow-y: scroll;
+  // flex: 13;
+  background-color: #b881ff00;
+
+  &:hover {
+    flex: 13;
+    cursor: pointer;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  & .wrapper {
+    padding: 18px 16px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    & .title {
+      color: white;
+      margin-left: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    & .buy {
+      position: absolute;
+      background-color: rgb(66, 175, 39);
+      border-radius: 5px;
+      padding: 5px 14px;
+      color: white;
+      margin-left: 20px;
+      font-size: 18px;
+      text-transform: uppercase;
+      left: 205px;
+      transition: 0.3s ease-in-out;
+      font-weight: bold;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    & .num {
+      font-size: 14px;
+      color: gray;
+      position: absolute;
+      padding: 2px 5px;
+      border-radius: 15px;
+      background-color: rgb(238, 255, 0);
+      top: 3px;
+      left: 38px;
+    }
+  }
+
+  & .wrap {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0px;
+    width: 320px;
+    gap: 10px;
+
+    & .row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      position: relative;
+      padding: 0px 10px;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: rgba(255, 0, 0, 0.13);
+      }
+
+      &:hover img {
+        transform: scale(1.1);
+      }
+
+      & img {
+        transition: 0.3s;
+      }
+
+      & .text {
+        font-weight: bold;
+      }
+
+      & .price {
+        position: absolute;
+        right: 10px;
+        font-weight: bold;
+      }
+    }
+  }
+}

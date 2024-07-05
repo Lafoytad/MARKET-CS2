@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 import styles from "./ItemPrice.module.scss";
 import Image from "next/image";
@@ -6,10 +6,10 @@ import React, { useState } from "react";
 import Tooltip from "@/app/components/atoms/tooltip/Tooltip";
 
 import { valueBuy, vis } from "@/app/store/slice/slice";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 export default function ItemPrice(props) {
-  // props.path/name/price/info1/info2/info3/rarity/collection/type/width?/discount?/X/Y/icon/caseOn?/itemsTooltip/url?/textUrl?/thing(если оружие)
+  //* props.path/name/price/info1/info2/info3/rarity/collection/type/width?/discount?/X/Y/icon/caseOn?(является ли кейсом или капсулой)/itemsTooltip/url?/textUrl?/thing(если оружие)
 
   // const count = useSelector((state) => state.counter.value);
   const dispatch = useDispatch();
@@ -33,13 +33,21 @@ export default function ItemPrice(props) {
   };
 
   const itemsLocal = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+    const day = now.getDate();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+
     const itemJSON = {
       type: props.type ? props.type : "",
       name: props.name ? props.name : "",
       price: props.price,
       discount: props.discount
         ? (props.price - props.price * (props.discount / 100)).toFixed(2)
-        : props.price, // есть ли скидка discount
+        : props.price, // есть ли скидка discount(реальная цена покупки)
       rarity: props.rarity ? props.rarity : "",
       collection: props.collection ? props.collection : "",
       caseOn: props.caseOn ? props.caseOn : "",
@@ -49,13 +57,19 @@ export default function ItemPrice(props) {
       info3: props.info3 ? props.info3 : "",
       icon: props.icon ? props.icon : "",
       thing: props.thing ? props.thing : "",
+      timeBuyYear: year,
+      timeBuyMonth: month,
+      timeBuyDay: day,
+      timeBuyhours: hours,
+      timeBuyMinutes: minutes,
+      timeBuySeconds: seconds,
     };
 
-    const storedItems = JSON.parse(localStorage.getItem("items")) || [];
+    const storedItems = JSON.parse(localStorage.getItem("itemsBuy")) || [];
 
     const Items = [...storedItems, itemJSON];
 
-    localStorage.setItem("items", JSON.stringify(Items)); // Отправляем на backend Items
+    localStorage.setItem("itemsBuy", JSON.stringify(Items));
   };
 
   return (
@@ -65,6 +79,8 @@ export default function ItemPrice(props) {
         dispatch(vis());
         dispatch(
           valueBuy({
+            caseOn: props.caseOn ? props.caseOn : "",
+            rarity: props.rarity ? props.rarity : "",
             type: props.type ? props.type : "",
             name: props.name ? props.name : "",
             price: props.discount

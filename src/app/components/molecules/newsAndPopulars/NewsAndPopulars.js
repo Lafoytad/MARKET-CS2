@@ -72,6 +72,7 @@ export default function NewsAndPopulars(props) {
                 index
               ) => (
                 <ItemPrice
+                  key={index}
                   path={path}
                   name={name}
                   price={price}
@@ -114,6 +115,7 @@ export default function NewsAndPopulars(props) {
                 index
               ) => (
                 <ItemPrice
+                  key={index}
                   path={path}
                   name={name}
                   price={price}

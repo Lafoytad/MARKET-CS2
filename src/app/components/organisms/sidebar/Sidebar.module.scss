@@ -1,4 +1,5 @@
 .aside {
+  overflow: hidden;
   position: absolute;
   top: 0;
   right: 0;
@@ -11,25 +12,34 @@
   background-position: center 64px;
   background-repeat: repeat;
   background-color: rgba(0, 0, 0, 0.045);
-  transition: 0.4s;
   z-index: 6;
-
-  & .background {
-    width: 65px;
-    height: 100vh;
-    background-image: url("../../../../../public/background/linemap_png.png");
-    transition: 0.4s;
-    opacity: 0.1;
-
-    &:hover {
-      width: 320px;
-    }
-  }
-
+  transition: 0.4s ease-in-out;
+  // width: 320px;
   &:hover {
     width: 320px;
   }
 
-  .block {
+  & .content {
+    overflow: hidden;
+    position: relative;
+    height: 100vh;
+
+    & .background {
+      width: 65px;
+      height: 100vh;
+      background-image: url("../../../../../public/background/linemap_png.png");
+      opacity: 0.3;
+      width: 320px;
+    }
+
+    & .gallery {
+      height: 100vh;
+      width: 100%;
+      position: absolute;
+      top: 0px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
   }
 }

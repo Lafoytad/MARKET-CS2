@@ -6,16 +6,158 @@
   max-height: 535px;
 
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   gap: 8px;
 
   .one {
-    background-color: rgb(224, 127, 0);
-    height: 270px;
+    // background-color: rgb(224, 127, 0);
+    background-image: url("/background/pickem_bg_22_png.png");
+    background-size: 150%;
+    background-repeat: no-repeat;
+    height: 257px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+
+    &:hover .one__capsule {
+      transform: scale(0.55);
+    }
+
+    &__back {
+      background-image: url("/background/pickem_mainmenu_promo_22_png.png");
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 100%;
+      background-size: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.3;
+      // z-index: 0;
+    }
+
+    &__capsule {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: -50px;
+      bottom: -60px;
+      background-image: url("/econ/weapon_cases/crate_sticker_pack_cph2024_group_champions_png.png");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      z-index: 4;
+      transform: scale(0.5);
+      transition: 0.7s;
+      z-index: 3;
+    }
+
+    &__title {
+      margin-top: 15px;
+      color: white;
+      font-size: 13px;
+      z-index: 2;
+    }
+
+    &__text {
+      bottom: 10px;
+      width: 100%;
+      margin-top: 15px;
+      margin-bottom: 60px;
+      background-image: url("/background/lineGreen.png");
+      z-index: 2;
+
+      & p {
+        text-align: right;
+        text-transform: uppercase;
+        margin-right: 25px;
+        padding: 7px 0px;
+        color: white;
+        font-size: 18px;
+      }
+    }
   }
 
   .two {
     background-color: rgb(224, 127, 0);
-    height: 257px;
+    height: 270px;
+    position: relative;
+    overflow: hidden;
+
+    &__wrap {
+      position: absolute;
+      display: flex;
+      align-items: flex-end;
+      left: 12px;
+      top: 16px;
+      z-index: 4;
+    }
+
+    &__title {
+      text-transform: uppercase;
+      font-size: 16px;
+      color: rgb(255, 255, 255);
+    }
+
+    &__else {
+      text-transform: uppercase;
+      font-size: 10px;
+      color: rgb(233, 233, 233);
+      padding: 2px 6px;
+      transition: 0.4s;
+
+      &:hover {
+        transform: scale(1.05);
+        color: rgb(255, 255, 255);
+      }
+    }
+
+    &__wrapper {
+      display: flex;
+      width: 500%;
+      height: 270px;
+      transition: 0.3s ease-in-out;
+    }
+
+    &__pageControl {
+      position: absolute;
+      bottom: 0px;
+      background-color: #3b393b;
+      height: 30px;
+      width: 100%;
+      border-top: 2px solid #666466;
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    &__left {
+      background-repeat: no-repeat;
+      width: 14px;
+      height: 14px;
+      transition: 0.2s;
+      transform: rotate(180deg);
+      margin-right: 8px;
+    }
+
+    &__block {
+      width: 15px;
+      height: 15px;
+      background-color: #2c2b2c;
+      transition: 0.3s;
+    }
+
+    &__right {
+      background-repeat: no-repeat;
+      width: 14px;
+      height: 14px;
+      transition: 0.2s;
+      margin-left: 8px;
+    }
   }
 }

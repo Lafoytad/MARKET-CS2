@@ -5,7 +5,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 export default function Tooltip(props) {
-  // props.isHovered/width/X/Y/name/collection/type/rarity/info1/info2/info3/icon/transition?/itemsTooltip/caseOn?
+  //* props.isHovered/width/X/Y/name/collection/type/rarity/info1/info2/info3/icon/transition?/itemsTooltip/caseOn?(является ли кейсом или капсулой)
   const width = props.width || "160";
 
   const colorTooltip = (rarity) => {
@@ -158,7 +158,7 @@ export default function Tooltip(props) {
           ""
         )}
 
-        {props.itemsTooltip ? (
+        {(props.itemsTooltip || props.stickersTooltip) && props.collection ? (
           <div className={styles.column}>
             <p className={styles.collectionTwo}>Коллекция {props.collection}</p>
             <ul
@@ -174,32 +174,92 @@ export default function Tooltip(props) {
               ) : (
                 ""
               )}
-              {props.itemsTooltip.map(
-                ({ name, collection, rarity, type }, index) =>
-                  props.collection == collection ? (
-                    <li
-                      style={{
-                        color: colorTooltip(rarity),
-                      }}
-                    >
-                      {props.name == name ? (
-                        <span>
-                          <img
-                            src="/icons/star.png"
-                            alt="marker star"
-                            width="14"
-                            height="14"
-                          />
-                        </span>
+              {/* /////// */}
+              {!props.stickersTooltip
+                ? props.itemsTooltip.map(
+                    ({ name, collection, rarity, type }, index) =>
+                      props.collection == collection ? (
+                        <li
+                          key={index}
+                          style={{
+                            color: colorTooltip(rarity),
+                          }}
+                        >
+                          {props.name == name ? (
+                            <span>
+                              <img
+                                src="/icons/star.png"
+                                alt="marker star"
+                                width="14"
+                                height="14"
+                              />
+                            </span>
+                          ) : (
+                            ""
+                          )}
+                          {type} | {name}
+                        </li>
                       ) : (
                         ""
-                      )}
-                      {type} | {name}
-                    </li>
-                  ) : (
-                    ""
+                      )
                   )
-              )}
+                : props.type === "Наклейка" || props.type.startsWith("Капсула")
+                ? props.stickersTooltip.map(
+                    ({ name, collection, rarity, type }, index) =>
+                      props.collection == collection ? (
+                        <li
+                          key={index}
+                          style={{
+                            color: colorTooltip(rarity),
+                          }}
+                        >
+                          {props.name == name ? (
+                            <span>
+                              <img
+                                src="/icons/star.png"
+                                alt="marker star"
+                                width="14"
+                                height="14"
+                              />
+                            </span>
+                          ) : (
+                            ""
+                          )}
+                          {type} | {name}
+                        </li>
+                      ) : (
+                        ""
+                      )
+                  )
+                : props.itemsTooltip.map(
+                    ({ name, collection, rarity, type }, index) =>
+                      props.collection == collection ? (
+                        <li
+                          key={index}
+                          style={{
+                            color: colorTooltip(rarity),
+                          }}
+                        >
+                          {props.name == name ? (
+                            <span>
+                              <img
+                                src="/icons/star.png"
+                                alt="marker star"
+                                width="14"
+                                height="14"
+                              />
+                            </span>
+                          ) : (
+                            ""
+                          )}
+                          {type} | {name}
+                        </li>
+                      ) : (
+                        ""
+                      )
+                  )}
+
+              {/* /////// */}
             </ul>
           </div>
         ) : (

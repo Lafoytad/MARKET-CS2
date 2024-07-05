@@ -15,10 +15,12 @@ export default function Home() {
 
   const [items, setItems] = useState([]);
   const [itemsTooltip, setItemsTooltip] = useState([]);
+  const [stickersTooltip, setStickersTooltip] = useState([]); // 0
 
   const [alphabet, setAlphabet] = useState([]);
   const [type, setType] = useState([]);
   const [collection, setСollection] = useState([]);
+  const [rarity, setRarity] = useState([]);
 
   useEffect(() => {
     const storedItems = JSON.parse(localStorage.getItem("items")) || [];
@@ -31,6 +33,25 @@ export default function Home() {
     setСollection(
       [...filtered].sort((a, b) => a.collection.localeCompare(b.collection))
     );
+    setRarity(
+      [...filtered].sort((a, b) => a.rarity.localeCompare(b.rarity)).reverse()
+    );
+
+    setInterval(() => {
+      const storedItems = JSON.parse(localStorage.getItem("items")) || [];
+      const filtered = storedItems.filter((item) => item.type === "Наклейка");
+
+      setItems(filtered);
+
+      setAlphabet([...filtered].sort((a, b) => a.name.localeCompare(b.name))); // сортировка
+      setType([...filtered].sort((a, b) => a.type.localeCompare(b.type)));
+      setСollection(
+        [...filtered].sort((a, b) => a.collection.localeCompare(b.collection))
+      );
+      setRarity(
+        [...filtered].sort((a, b) => a.rarity.localeCompare(b.rarity)).reverse()
+      );
+    }, 150);
   }, []);
 
   useEffect(() => {
@@ -41,6 +62,7 @@ export default function Home() {
     const res = await fetch("/api/data");
     const data = await res.json();
     setItemsTooltip(data.items);
+    setStickersTooltip(data.stickers);
   }
 
   const [X, setX] = useState("");
@@ -88,10 +110,12 @@ export default function Home() {
                     collection,
                     type,
                     icon,
+                    caseOn,
                   },
                   index
                 ) => (
                   <Item
+                    key={index}
                     path={path}
                     name={name}
                     price={price}
@@ -109,6 +133,8 @@ export default function Home() {
                     icon={icon}
                     transition={1000}
                     itemsTooltip={itemsTooltip}
+                    caseOn={caseOn}
+                    stickersTooltip={stickersTooltip}
                   />
                 )
               )
@@ -127,10 +153,12 @@ export default function Home() {
                     collection,
                     type,
                     icon,
+                    caseOn,
                   },
                   index
                 ) => (
                   <Item
+                    key={index}
                     path={path}
                     name={name}
                     price={price}
@@ -148,6 +176,8 @@ export default function Home() {
                     icon={icon}
                     transition={1000}
                     itemsTooltip={itemsTooltip}
+                    caseOn={caseOn}
+                    stickersTooltip={stickersTooltip}
                   />
                 )
               )
@@ -166,10 +196,12 @@ export default function Home() {
                     collection,
                     type,
                     icon,
+                    caseOn,
                   },
                   index
                 ) => (
                   <Item
+                    key={index}
                     path={path}
                     name={name}
                     price={price}
@@ -187,6 +219,8 @@ export default function Home() {
                     icon={icon}
                     transition={1000}
                     itemsTooltip={itemsTooltip}
+                    caseOn={caseOn}
+                    stickersTooltip={stickersTooltip}
                   />
                 )
               )
@@ -205,10 +239,12 @@ export default function Home() {
                     collection,
                     type,
                     icon,
+                    caseOn,
                   },
                   index
                 ) => (
                   <Item
+                    key={index}
                     path={path}
                     name={name}
                     price={price}
@@ -226,6 +262,51 @@ export default function Home() {
                     icon={icon}
                     transition={1000}
                     itemsTooltip={itemsTooltip}
+                    caseOn={caseOn}
+                    stickersTooltip={stickersTooltip}
+                  />
+                )
+              )
+            : ""}
+          {dropdownValue == "По редкости"
+            ? rarity.map(
+                (
+                  {
+                    name,
+                    price,
+                    path,
+                    rarity,
+                    info1,
+                    info2,
+                    info3,
+                    collection,
+                    type,
+                    icon,
+                    caseOn,
+                  },
+                  index
+                ) => (
+                  <Item
+                    key={index}
+                    path={path}
+                    name={name}
+                    price={price}
+                    info1={info1}
+                    info2={info2}
+                    info3={info3}
+                    rarity={rarity}
+                    collection={collection}
+                    type={type}
+                    width={175}
+                    discount={50}
+                    X={X}
+                    Y={Y}
+                    items={items}
+                    icon={icon}
+                    transition={1000}
+                    itemsTooltip={itemsTooltip}
+                    caseOn={caseOn}
+                    stickersTooltip={stickersTooltip}
                   />
                 )
               )

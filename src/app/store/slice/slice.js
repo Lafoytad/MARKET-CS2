@@ -13,7 +13,9 @@ export const counterSlice = createSlice({
     valueBuy: (state, action) => {
       const newItem = {
         // id: state.value.length + 1,
-        type: action.payload.thing || "",
+        caseOn: action.payload.caseOn || "",
+        rarity: action.payload.rarity || "",
+        thing: action.payload.thing || "",
         type: action.payload.type || "",
         name: action.payload.name || "",
         price: action.payload.discount

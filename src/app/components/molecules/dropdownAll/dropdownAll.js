@@ -58,6 +58,13 @@ export default function Dropdown() {
           >
             По колекции
           </p>
+          <p
+            onClick={() => {
+              dispatch(DropValue("По редкости"));
+            }}
+          >
+            По редкости
+          </p>
         </div>
       </div>
     </div>

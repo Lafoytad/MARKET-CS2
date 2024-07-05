@@ -22,7 +22,7 @@ const MyNotification = () => {
 
   const openNotification = (placement) => {
     api.info({
-      message: `Купили предмет за ${count[updatedIndex].price}$`,
+      message: `Предмет в корзине за ${count[updatedIndex].price}$`,
       description: (
         <Context.Consumer>
           {!count[updatedIndex].name

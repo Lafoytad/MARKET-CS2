@@ -29,10 +29,6 @@
   }
 }
 
-.settings {
-  background-image: url("/icons/settings_icon.png");
-  &:hover {
-    transform: rotate(60deg);
-    background-image: url("/icons/settings_iconHover.png");
-  }
+.activeHome {
+  background-image: url("/icons/home_iconHover.png");
 }

@@ -12,8 +12,8 @@ export async function GET(request) {
         name: "",
         price: "1.99",
         rarity: "",
-        collection: "",
-        caseOn: true,
+        collection: false,
+        caseOn: false,
         path: "/econ/weapon_cases/casket.png",
         info1:
           "В хранилище можно поместить до 1000 лишних предметов, которым не хватает места в вашем инвентаре. Предметы можно перемещать в хранилище и из него когда угодно. Также с его помощью можно упорядочить свои ценные предметы.",
@@ -27,8 +27,8 @@ export async function GET(request) {
         name: "",
         price: "1.99",
         rarity: "",
-        collection: "",
-        caseOn: true,
+        collection: false,
+        caseOn: false,
         path: "/econ/weapon_cases/NameTag.png",
         info1:
           "Этот предмет переименует оружие. Выгравированная табличка с именем будет прикреплена к оружию и видна в игре.",
@@ -42,8 +42,8 @@ export async function GET(request) {
         name: "",
         price: "0.99",
         rarity: "",
-        collection: "",
-        caseOn: true,
+        collection: false,
+        caseOn: false,
         path: "/econ/weapon_cases/stattrak_swap_tool_bundle_png.png",
         info1:
           "Этот предмет может обменять значения StatTrak™ у двух одинаковых раскрасок предмета.",

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Tooltip from "@/app/components/atoms/tooltip/Tooltip";
 
 export default function ItemPrice(props) {
-  // props.path/name/price/info1/info2/info3/rarity/collection/type/width?/discount?/X/Y/items/icon/transition/itemsTooltip
+  //* props.path/name/price/info1/info2/info3/rarity/collection/type/width?/discount?/X/Y/items/icon/transition/itemsTooltip/caseOn?(является ли кейсом или капсулой)/stickersTooltip(для наклеек и капсул)
   const width = props.width || 160;
 
   const [isHovered, setIsHovered] = useState(false);
@@ -56,7 +56,7 @@ export default function ItemPrice(props) {
         isHovered={isHovered}
         width={width}
         X={props.X}
-        Y={props.Y} //NEW
+        Y={props.Y}
         name={props.name}
         collection={props.collection}
         type={props.type}
@@ -69,6 +69,8 @@ export default function ItemPrice(props) {
         buttom={1}
         transition={props.transition}
         itemsTooltip={props.itemsTooltip}
+        caseOn={props.caseOn}
+        stickersTooltip={props.stickersTooltip}
       />
     </div>
   );

@@ -4,19 +4,18 @@ import styles from "./News.module.scss";
 import React, { useEffect, useState } from "react";
 import background from "/public/background/static.jpg";
 import Image from "next/image";
+import axios from "axios";
 
 export default function News() {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
+    async function fetchData() {
+      axios.get("/api/news").then((response) => setNews(response.data));
+    }
+
     fetchData();
   }, []);
-
-  async function fetchData() {
-    const res = await fetch("/api/news");
-    const data = await res.json();
-    setNews(data);
-  }
 
   return (
     <div className={styles.background}>

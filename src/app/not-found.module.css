@@ -1,0 +1,51 @@
+.page_404 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* height: 100vh; */
+  width: 100vw;
+  position: relative;
+  top: 15vh;
+}
+
+.title {
+  width: 100%;
+  position: absolute;
+  /* width: 100vh; */
+  text-align: center;
+  top: 5vh;
+  font-size: 90px;
+  z-index: 2;
+}
+
+.background {
+  position: relative;
+  background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+  /* background-size: 100%; */
+  width: 100%;
+  background-repeat: no-repeat;
+  width: 39vw;
+  height: 47vh;
+}
+
+.text {
+  margin-top: 24px;
+  font-size: 25px;
+}
+
+.subText {
+  font-size: 20px;
+}
+
+.link_404 {
+  margin-top: 15px;
+  text-transform: uppercase;
+  color: white;
+  background-color: rgb(67, 172, 41);
+  padding: 8px 15px;
+}
+
+.link_404:hover {
+  text-decoration: underline;
+}

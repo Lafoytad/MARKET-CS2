@@ -67,6 +67,7 @@ export default function Home() {
               index
             ) => (
               <ItemPrice
+                key={index}
                 path={path}
                 name={name}
                 price={price}
