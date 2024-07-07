@@ -5,21 +5,18 @@ import MainHeader from "@/app/components/molecules/storeHeader/StoreHeader";
 import React, { useEffect, useState, useRef } from "react";
 import MyNotification from "@/app/components/atoms/notification/notification";
 import ItemPrice from "@/app/components/atoms/itemPrice/ItemPrice";
+import { getAllData } from "@/app/services/data";
 
 export default function Home() {
   const [items, setItems] = useState([]);
   const [itemsTooltip, setItemsTooltip] = useState([]);
 
   useEffect(() => {
-    fetchData();
+    getAllData().then((data) => {
+      setItems(data.items);
+      setItemsTooltip(data.items);
+    });
   }, []);
-
-  async function fetchData() {
-    const res = await fetch("/api/data");
-    const data = await res.json();
-    setItems(data.items);
-    setItemsTooltip(data.items);
-  }
 
   const [X, setX] = useState("");
   const [Y, setY] = useState("");

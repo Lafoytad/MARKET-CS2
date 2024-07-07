@@ -9,13 +9,14 @@ import Image from "next/image";
 import Item from "@/app/components/atoms/item/Item";
 
 import { useSelector } from "react-redux";
+import { getAllData } from "@/app/services/data";
 
 export default function Home() {
   const dropdownValue = useSelector((state) => state.dropdown.value);
 
   const [items, setItems] = useState([]);
   const [itemsTooltip, setItemsTooltip] = useState([]);
-  const [stickersTooltip, setStickersTooltip] = useState([]); // 0
+  const [stickersTooltip, setStickersTooltip] = useState([]);
 
   const [alphabet, setAlphabet] = useState([]);
   const [type, setType] = useState([]);
@@ -59,15 +60,11 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    fetchData();
+    getAllData().then((data) => {
+      setItemsTooltip(data.items);
+      setStickersTooltip(data.stickers);
+    });
   }, []);
-
-  async function fetchData() {
-    const res = await fetch("/api/data");
-    const data = await res.json();
-    setItemsTooltip(data.items);
-    setStickersTooltip(data.stickers);
-  }
 
   const [X, setX] = useState("");
   const [Y, setY] = useState("");

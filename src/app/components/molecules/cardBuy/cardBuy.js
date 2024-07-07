@@ -44,7 +44,7 @@ export default function CardBuy() {
     if (isScrolling) {
       const scrollAnimation = () => {
         if (cardRef.current.scrollTop > 0) {
-          cardRef.current.scrollTop -= 10; // Скроллим на 10 пикселей вверх
+          cardRef.current.scrollTop -= 20; // Скроллим на 10 пикселей вверх
           requestAnimationFrame(scrollAnimation); // Вызываем анимацию снова
         } else {
           setIsScrolling(false); // Останавливаем анимацию

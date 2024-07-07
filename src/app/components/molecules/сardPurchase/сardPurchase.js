@@ -8,10 +8,12 @@ export default function CardBuy() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    const storedItems = JSON.parse(localStorage.getItem("items")) || [];
+    const storedItems =
+      JSON.parse(localStorage.getItem("items")).reverse() || [];
     setItems(storedItems);
     setInterval(() => {
-      const storedItems = JSON.parse(localStorage.getItem("items")) || [];
+      const storedItems =
+        JSON.parse(localStorage.getItem("items")).reverse() || [];
       setItems(storedItems);
     }, 150);
   }, []);
@@ -19,8 +21,7 @@ export default function CardBuy() {
   const resetItem = (index) => {
     const updatedItems = [...items];
     updatedItems.splice(index, 1);
-    setItems(updatedItems);
-    localStorage.setItem("items", JSON.stringify(updatedItems));
+    localStorage.setItem("items", JSON.stringify(updatedItems.reverse()));
   };
 
   const cardRef = useRef(null);
@@ -86,7 +87,9 @@ export default function CardBuy() {
               className={styles.row}
             >
               <p className={styles.time}>
-                {timeBuyYear}.{timeBuyMonth}.{timeBuyDay}{" "}
+                {timeBuyDay <= 9 ? `0${timeBuyDay}` : timeBuyDay}.
+                {timeBuyMonth <= 9 ? `0${timeBuyMonth}` : timeBuyMonth}.
+                {timeBuyYear}{" "}
                 {timeBuyhours <= 9 ? `0${timeBuyhours}` : timeBuyhours}:
                 {timeBuyMinutes <= 9 ? `0${timeBuyMinutes}` : timeBuyMinutes}:
                 {timeBuySeconds <= 9 ? `0${timeBuySeconds}` : timeBuySeconds}

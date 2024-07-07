@@ -1,7 +1,7 @@
 export async function GET(request) {
   try {
     const newsResponse = await fetch(
-      "https://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=730&count=10&maxlength=300&format=json"
+      "https://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=730&count=20&maxlength=300&format=json"
     );
     if (!newsResponse.ok) {
       throw new Error("Ошибка при получении данных");

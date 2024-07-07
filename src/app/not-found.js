@@ -1,7 +1,7 @@
 import Link from "next/link";
 import notFound from "./not-found.module.css";
 
-export default function Custom404() {
+export default function NotFound() {
   return (
     <section className={notFound.page_404}>
       <h1 className={notFound.title}>404</h1>

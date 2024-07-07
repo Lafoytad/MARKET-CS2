@@ -5,6 +5,7 @@ import styles from "./Copenhagen.module.scss";
 import MainHeader from "@/app/components/molecules/storeHeader/StoreHeader";
 import React, { useEffect, useState, useRef } from "react";
 import MyNotification from "@/app/components/atoms/notification/notification";
+import { getAllData } from "@/app/services/data";
 
 export default function Home() {
   const [items, setItems] = useState([]);
@@ -12,16 +13,12 @@ export default function Home() {
   const [itemsTooltip, setItemsTooltip] = useState([]);
 
   useEffect(() => {
-    fetchData();
+    getAllData().then((data) => {
+      setItems(data.capsules);
+      setitemsStickers(data.stickers);
+      setItemsTooltip(data.stickers);
+    });
   }, []);
-
-  async function fetchData() {
-    const res = await fetch("/api/data");
-    const data = await res.json();
-    setItems(data.capsules);
-    setitemsStickers(data.stickers);
-    setItemsTooltip(data.stickers);
-  }
 
   const [X, setX] = useState("");
   const [Y, setY] = useState("");

@@ -7,7 +7,7 @@
   transition: 0.8s ease-in-out;
   overflow: hidden;
   overflow-y: scroll;
-  // flex: 13;
+  flex: 13;
   background-color: #abec8a00;
 
   &:hover {
@@ -49,24 +49,60 @@
         transform: scale(1.05);
       }
     }
+
+    & .num {
+      font-size: 14px;
+      color: gray;
+      position: absolute;
+      padding: 2px 5px;
+      border-radius: 15px;
+      background-color: rgb(238, 255, 0);
+      top: 3px;
+      left: 38px;
+    }
   }
 
   & .wrap {
     color: white;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 10px 0px;
     width: 320px;
-    gap: 10px;
+    gap: 5px;
 
     & .row {
       display: flex;
       align-items: center;
       gap: 15px;
       position: relative;
+      padding: 0px 10px 5px 10px;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: rgba(51, 255, 0, 0.13);
+      }
+
+      &:hover .time {
+        opacity: 0.5;
+      }
+
+      &:hover .price {
+        color: rgb(255, 0, 0);
+        // text-decoration: line-through;
+      }
 
       &:hover img {
         transform: scale(1.1);
+      }
+
+      & .time {
+        position: absolute;
+        left: 50%;
+        top: -10px;
+        transform: translateX(-50%);
+        color: rgb(236, 236, 236);
+        opacity: 0;
+        transition: 0.2s;
       }
 
       & img {
@@ -79,8 +115,9 @@
 
       & .price {
         position: absolute;
-        right: 0px;
+        right: 10px;
         font-weight: bold;
+        transition: 0.3s;
       }
     }
   }

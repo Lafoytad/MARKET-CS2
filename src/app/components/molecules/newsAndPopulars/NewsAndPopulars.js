@@ -7,29 +7,26 @@ import right from "/public/icons/right.png";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import MyNotification from "../../atoms/notification/notification";
+import { getAllData } from "@/app/services/data";
 
 export default function NewsAndPopulars(props) {
-  // props.path/img/title/item
+  //* props.path/img/title/item
 
   const [items, setItems] = useState([]);
   const [itemsTooltip, setItemsTooltip] = useState([]);
 
   useEffect(() => {
-    fetchData();
+    getAllData().then((data) => {
+      if (props.item == "capsules") {
+        setItems(data.capsules);
+        setItemsTooltip(data.stickers);
+      }
+      if (props.item == "items") {
+        setItems(data.items);
+        setItemsTooltip(data.items);
+      } // props.item
+    });
   }, []);
-
-  async function fetchData() {
-    const res = await fetch("/api/data");
-    const data = await res.json();
-    if (props.item == "capsules") {
-      setItems(data.capsules);
-      setItemsTooltip(data.stickers);
-    }
-    if (props.item == "items") {
-      setItems(data.items);
-      setItemsTooltip(data.items);
-    } // props.item
-  }
 
   const firstFiveItemsNewAndPopular = items.slice(0, 5);
   const firstFiveItemsCopenhagen = items.slice(0, 5);
