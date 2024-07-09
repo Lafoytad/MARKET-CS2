@@ -12,30 +12,34 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
+}
 
-  & .containerThree {
-    @include container();
-    background-image: url("/background/store_home_tournament.png");
+@media (max-width: 1360px) {
+  .column {
+    width: 850px;
+  }
+}
 
-    & .content {
-      width: calc(100% - 22px - 30px);
-      height: calc(100% - 30px - 22px);
-      margin: 30px 22px 22px 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+@media (max-width: 1000px) {
+  .column {
+    width: 700px;
+  }
+}
 
-      & .title {
-        color: white;
-        width: 150px;
-        font-size: 30px;
-        text-transform: uppercase;
-      }
+@media (max-width: 850px) {
+  .column {
+    width: 500px;
+  }
+}
 
-      & .wrapper {
-        display: flex;
-        gap: 15px;
-      }
-    }
+@media (max-width: 650px) {
+  .column {
+    width: 300px;
+  }
+}
+
+@media (max-height: 1025px) {
+  .background {
+    overflow-y: scroll;
   }
 }

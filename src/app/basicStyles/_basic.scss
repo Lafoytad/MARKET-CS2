@@ -51,3 +51,34 @@
     );
   }
 }
+
+@media (max-width: 1360px) {
+  .zoneSkroll {
+    max-width: 850px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .zoneSkroll {
+    left: calc(50%);
+    max-width: 750px;
+  }
+}
+
+@media (max-width: 950px) {
+  .zoneSkroll {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 850px) {
+  .zoneSkroll {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 650px) {
+  .zoneSkroll {
+    max-width: 480px;
+  }
+}

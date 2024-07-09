@@ -31,3 +31,16 @@
   gap: 15px;
   color: rgb(226, 226, 226);
 }
+
+@media (max-width: 1000px) {
+  .wrapper {
+    left: calc(46.5%);
+  }
+}
+
+@media (max-width: 670px) {
+  .wrapper {
+    width: 85%;
+    left: calc(44%);
+  }
+}

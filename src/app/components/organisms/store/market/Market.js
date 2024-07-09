@@ -72,7 +72,6 @@ export default function Home() {
                 rarity={rarity}
                 collection={collection}
                 type={type}
-                width={175}
                 X={X}
                 Y={Y}
                 icon={icon}

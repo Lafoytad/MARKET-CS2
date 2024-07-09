@@ -8,13 +8,11 @@ export default function CardBuy() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    const storedItems =
-      JSON.parse(localStorage.getItem("items")).reverse() || [];
-    setItems(storedItems);
+    const storedItems = JSON.parse(localStorage.getItem("items")) || [];
+    setItems(storedItems.reverse());
     setInterval(() => {
-      const storedItems =
-        JSON.parse(localStorage.getItem("items")).reverse() || [];
-      setItems(storedItems);
+      const storedItems = JSON.parse(localStorage.getItem("items")) || [];
+      setItems(storedItems.reverse());
     }, 150);
   }, []);
 
@@ -61,17 +59,9 @@ export default function CardBuy() {
           (
             {
               name,
-              price,
               discount,
               path,
-              rarity,
-              info1,
-              info2,
-              info3,
-              collection,
               type,
-              icon,
-              caseOn,
               timeBuyYear,
               timeBuyMonth,
               timeBuyDay,
@@ -119,7 +109,7 @@ export default function CardBuy() {
                   {type.length > 25 ? type.substring(0, 25) + "..." : type}
                 </p>
               )}
-              <p className={styles.price}>{discount}$</p>{" "}
+              <p className={styles.price}>{discount ? `${discount}$` : "0$"}</p>{" "}
             </div>
           )
         )}

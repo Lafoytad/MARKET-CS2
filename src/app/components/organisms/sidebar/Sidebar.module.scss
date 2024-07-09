@@ -14,9 +14,9 @@
   background-color: rgba(0, 0, 0, 0.045);
   z-index: 6;
   transition: 0.4s ease-in-out;
-  width: 320px;
+  // width: 320px;
   &:hover {
-    // width: 320px;
+    width: 320px;
   }
 
   & .content {

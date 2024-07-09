@@ -20,7 +20,6 @@
     }
 
     & a {
-      // color: #00b7ffb4;
       padding: 0px 25px;
     }
 
@@ -47,5 +46,11 @@
         width: 100%;
       }
     }
+  }
+}
+
+@media (max-width: 600px) {
+  .ul {
+    transform: translate(-58%, -50%);
   }
 }

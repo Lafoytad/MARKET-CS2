@@ -2,10 +2,34 @@ import styles from "./Item.module.scss";
 import Image from "next/image";
 import React, { useState } from "react";
 import Tooltip from "@/app/components/atoms/tooltip/Tooltip";
+import { useMediaQuery } from "react-responsive";
 
 export default function ItemPrice(props) {
   //* props.path/name/price/info1/info2/info3/rarity/collection/type/width?/discount?/X/Y/items/icon/transition/itemsTooltip/caseOn?(является ли кейсом или капсулой)/stickersTooltip(для наклеек и капсул)
-  const width = props.width || 160;
+  const useResponsiveValue = () => {
+    const isMobileSmall = useMediaQuery({ query: "(max-width: 650px)" });
+    const isMobile = useMediaQuery({
+      query: "(min-width: 651px) and (max-width: 1000px)",
+    });
+    const isTablet = useMediaQuery({
+      query: "(min-width: 1001px) and (max-width: 1360px)",
+    });
+    const isDesktop = useMediaQuery({ query: "(min-width: 1360px)" });
+
+    if (isMobileSmall) {
+      return 100;
+    } else if (isMobile) {
+      return 130;
+    } else if (isTablet) {
+      return 150;
+    } else if (isDesktop) {
+      return 175;
+    }
+  };
+
+  const widthMedia = useResponsiveValue();
+
+  const width = props.width || widthMedia;
 
   const [isHovered, setIsHovered] = useState(false);
 

@@ -19,6 +19,7 @@
       height: 100%;
       backdrop-filter: blur(5px);
       box-shadow: 0px 0px 0px 5px #5c5a56;
+      // background-color: #31313171;
 
       & .fone {
         background-color: #5c5a56;
@@ -51,7 +52,7 @@
   }
 
   & .column {
-    margin-top: 28px;
+    margin-top: 55px;
     max-width: 285px;
     display: flex;
     flex-direction: column;
@@ -94,6 +95,150 @@
       & img {
         align-self: center;
         background-color: #5c5a56; // вместо этого должна быть 3 картинки
+      }
+    }
+  }
+}
+
+@media (max-width: 1360px) {
+  .container {
+    & .wrapper {
+      height: 207px;
+
+      margin: 0 25px;
+      & .item {
+        width: 113px;
+      }
+    }
+
+    & .column {
+      max-width: 260px;
+
+      & .txt {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .container {
+    height: 250px;
+
+    & .wrapper {
+      height: 167px;
+
+      margin: 0 25px;
+
+      & .item {
+        width: 83px;
+      }
+    }
+
+    & .column {
+      max-width: 230px;
+
+      & .title {
+        font-size: 27px;
+      }
+
+      & .subtitle {
+        font-size: 16px;
+
+        background-size: 270px;
+      }
+
+      & .txt {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .container {
+    height: 310px;
+    flex-direction: column;
+
+    & .wrapper {
+      height: 137px;
+      top: 100px;
+      left: 20px;
+      margin: 0 25px;
+
+      & .item {
+        width: 83px;
+      }
+    }
+
+    & .column {
+      margin-top: 50px;
+      max-width: 230px;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+
+      & .title {
+        font-size: 25px;
+      }
+
+      & .subtitle {
+        margin-top: 10px;
+        font-size: 16px;
+        background-size: 270px;
+      }
+
+      & .txt {
+        margin-top: 5px;
+
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .container {
+    height: 285px;
+
+    flex-direction: column;
+
+    & .wrapper {
+      height: 107px;
+
+      top: 90px;
+      left: 10px;
+
+      gap: 15px;
+      margin: 0 5px;
+
+      & .item {
+        width: 57px;
+      }
+    }
+
+    & .column {
+      margin-top: 50px;
+      max-width: 230px;
+
+      left: 50%;
+      transform: translateX(-50%);
+
+      & .title {
+        font-size: 25px;
+      }
+
+      & .subtitle {
+        margin-top: 10px;
+        font-size: 16px;
+
+        background-size: 270px;
+      }
+
+      & .txt {
+        margin-top: 5px;
+
+        font-size: 12px;
       }
     }
   }

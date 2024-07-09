@@ -60,7 +60,6 @@
     }
 
     & .wrapper {
-      // height: 28px;
       display: flex;
       justify-content: space-between;
 
@@ -119,6 +118,145 @@
 
         &:hover {
           background-image: url("/icons/helpHover.png");
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1360px) {
+  .item {
+    & .bottom {
+      & .text {
+        font-size: 11px;
+      }
+
+      & .wrapper {
+        & .price {
+          font-size: 14px;
+        }
+        & .url {
+          position: relative;
+          top: -5px;
+          font-size: 12px;
+        }
+
+        & .discount {
+          & .percent {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 11px;
+            background-color: green;
+          }
+
+          & .column {
+            & .oldPrice {
+              font-size: 8px;
+            }
+
+            & .newPrice {
+              font-size: 10px;
+            }
+          }
+        }
+
+        & .info {
+          background-repeat: no-repeat;
+          background-size: 8px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .item {
+    & .bottom {
+      & .text {
+        font-size: 7px;
+      }
+
+      & .wrapper {
+        & .price {
+          font-size: 9px;
+        }
+
+        & .url {
+          font-size: 7px;
+        }
+
+        & .discount {
+          & .percent {
+            font-size: 9px;
+            background-color: green;
+            padding: 0px 3px;
+          }
+
+          & .column {
+            & .oldPrice {
+              font-size: 6px;
+            }
+
+            & .newPrice {
+              font-size: 8px;
+            }
+          }
+        }
+
+        & .info {
+          background-repeat: no-repeat;
+          background-size: 7px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .item {
+    & .bottom {
+      // padding: 3px 6px 3px 6px;
+      & .text {
+        font-size: 5px;
+      }
+
+      & .wrapper {
+        height: 14px;
+        & .price {
+          font-size: 7px;
+        }
+
+        & .url {
+          top: -1px;
+          font-size: 4px;
+        }
+
+        & .discount {
+          & .percent {
+            font-size: 8px;
+            background-color: green;
+            padding: 0px 2px;
+          }
+
+          & .column {
+            & .oldPrice {
+              font-size: 5px;
+            }
+
+            & .newPrice {
+              font-size: 6px;
+            }
+          }
+        }
+
+        & .info {
+          background-repeat: no-repeat;
+          background-size: 4px;
+          position: relative;
+          left: 7px;
+          top: 5px;
         }
       }
     }

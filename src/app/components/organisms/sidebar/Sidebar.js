@@ -1,5 +1,5 @@
 import CardBuy from "../../molecules/cardBuy/cardBuy";
-import CardChat from "../../molecules/cardChat/cardChat";
+import CardChat from "../../molecules/cardChatServer/cardChatServer";
 import CardPurchase from "../../molecules/сardPurchase/сardPurchase";
 import styles from "./Sidebar.module.scss";
 

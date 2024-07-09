@@ -1,0 +1,73 @@
+.card {
+  position: relative;
+  left: 0px;
+  // padding: 8px;
+  background-color: white;
+  flex: 1;
+  transition: 0.8s ease-in-out;
+  overflow: hidden;
+  overflow-y: scroll;
+  // flex: 13;
+  background-color: #abec8a00;
+
+  &:hover {
+    flex: 13;
+    cursor: pointer;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  & .wrapper {
+    padding: 18px 16px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    & .title {
+      color: white;
+      margin-left: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+  & .wrap {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0px;
+    width: 320px;
+    gap: 5px;
+    background-color: rgba(27, 27, 27, 0.041);
+
+    & .row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      position: relative;
+      padding: 0px 3px 5px 10px;
+      transition: 0.3s ease-in-out;
+      border-right: 10px solid rgba(0, 128, 0, 0);
+
+      &:not(:first-child) {
+        border-top: 5px solid rgba(255, 255, 255, 0.068);
+      }
+
+      &:hover {
+        border-right: 6px solid green;
+        background-color: rgba(27, 27, 27, 0.158);
+      }
+
+      & .name {
+        font-weight: bold;
+      }
+
+      & .text {
+        font-weight: bold;
+        font-size: 15px;
+      }
+    }
+  }
+}

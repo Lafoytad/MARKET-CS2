@@ -8,9 +8,33 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import MyNotification from "../../atoms/notification/notification";
 import { getAllData } from "@/app/services/data";
+import { useMediaQuery } from "react-responsive";
 
 export default function NewsAndPopulars(props) {
   //* props.path/img/title/item
+
+  const useResponsiveValue = () => {
+    const isMobileSmall = useMediaQuery({ query: "(max-width: 650px)" });
+    const isMobile = useMediaQuery({
+      query: "(min-width: 651px) and (max-width: 1000px)",
+    });
+    const isTablet = useMediaQuery({
+      query: "(min-width: 1001px) and (max-width: 1360px)",
+    });
+    const isDesktop = useMediaQuery({ query: "(min-width: 1360px)" });
+
+    if (isMobileSmall) {
+      return 60;
+    } else if (isMobile) {
+      return 80;
+    } else if (isTablet) {
+      return 120;
+    } else if (isDesktop) {
+      return 150;
+    }
+  };
+
+  const widthMedia = useResponsiveValue();
 
   const [items, setItems] = useState([]);
   const [itemsTooltip, setItemsTooltip] = useState([]);
@@ -82,7 +106,7 @@ export default function NewsAndPopulars(props) {
                   icon={icon}
                   caseOn={caseOn}
                   itemsTooltip={itemsTooltip}
-                  width={150}
+                  width={widthMedia}
                   Y={1}
                   thing={thing}
                 />
@@ -125,7 +149,7 @@ export default function NewsAndPopulars(props) {
                   icon={icon}
                   caseOn={caseOn}
                   itemsTooltip={itemsTooltip}
-                  width={150}
+                  width={widthMedia}
                   discount={50}
                   Y={1}
                 />

@@ -6,8 +6,27 @@ import MainHeader from "@/app/components/molecules/storeHeader/StoreHeader";
 import React, { useEffect, useState, useRef } from "react";
 import MyNotification from "@/app/components/atoms/notification/notification";
 import { getAllData } from "@/app/services/data";
+import { useMediaQuery } from "react-responsive";
 
 export default function Home() {
+  const useResponsiveValue = () => {
+    const isMobile = useMediaQuery({ query: "(max-width: 1000px)" });
+    const isTablet = useMediaQuery({
+      query: "(min-width: 1001px) and (max-width: 1360px)",
+    });
+    const isDesktop = useMediaQuery({ query: "(min-width: 1360px)" });
+
+    if (isMobile) {
+      return 80;
+    } else if (isTablet) {
+      return 120;
+    } else if (isDesktop) {
+      return 175;
+    }
+  };
+
+  const widthMedia = useResponsiveValue();
+
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -72,7 +91,7 @@ export default function Home() {
                 rarity={rarity}
                 collection={collection}
                 type={type}
-                width={175}
+                width={widthMedia}
                 X={X}
                 Y={Y}
                 icon={icon}

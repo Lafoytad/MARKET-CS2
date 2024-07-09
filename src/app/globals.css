@@ -85,3 +85,51 @@ main {
   width: 100vw;
   height: 100vh;
 }
+
+@media (max-width: 1919px) {
+  main {
+    background-size: 110%;
+  }
+}
+
+@media (max-width: 1750px) {
+  main {
+    background-size: 120%;
+  }
+}
+
+@media (max-width: 1600px) {
+  main {
+    background-size: 130%;
+  }
+}
+
+@media (max-width: 1480px) {
+  main {
+    background-size: 140%;
+  }
+}
+
+@media (max-width: 1370px) {
+  main {
+    background-size: 150%;
+  }
+}
+
+@media (max-width: 1285px) {
+  main {
+    background-size: 180%;
+  }
+}
+
+@media (max-width: 1070px) {
+  main {
+    background-size: 250%;
+  }
+}
+
+@media (max-width: 770px) {
+  main {
+    background-size: 300%;
+  }
+}

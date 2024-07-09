@@ -1,0 +1,80 @@
+.form {
+  position: absolute;
+  width: 166px;
+  height: 53px;
+  top: 50%;
+  left: 150px;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+
+    input {
+      border: 0;
+      margin-bottom: 5px;
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #333;
+      font-size: 12px;
+      transition: background-color 0.3s, color 0.3s;
+
+      &:focus {
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+    }
+
+    .IName {
+      border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+    }
+
+    .IMessage {
+      border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+    }
+
+    .errorInput {
+      border: 1px solid red;
+      background-color: rgba(255, 0, 0, 0.1);
+      color: red;
+    }
+  }
+
+  .IButton {
+    border: 0;
+    width: 40px;
+    height: 45px;
+    border-radius: 5px;
+    background-color: rgba(0, 255, 13, 1);
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    animation: pulse 5s infinite alternate;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: rgba(0, 212, 255, 1);
+      animation: none;
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      background-color: rgba(0, 255, 13, 1);
+    }
+    100% {
+      background-color: rgba(0, 212, 255, 1);
+    }
+  }
+}

@@ -2,7 +2,7 @@ import styles from "./itemAside.module.scss";
 import Image from "next/image";
 
 export default function ItemPrice(props) {
-  //* props.path/name/price/rarity/width?
+  //* props.path/name/price/rarity/width?/type
 
   const width = props.width || 160;
 

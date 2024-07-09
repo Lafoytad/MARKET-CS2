@@ -34,7 +34,6 @@ export default function Panel() {
   const [active, setActive] = useState(1);
 
   const [items, setItems] = useState([]);
-  const [itemsTooltip, setItemsTooltip] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -44,14 +43,6 @@ export default function Panel() {
     const res = await fetch("/api/data");
     const data = await res.json();
     setItems(
-      [...data.items]
-        .sort((a, b) => a.rarity.localeCompare(b.rarity))
-        .reverse()
-        .slice(0, 14)
-        .reverse()
-        .slice(0, 5)
-    );
-    setItemsTooltip(
       [...data.items]
         .sort((a, b) => a.rarity.localeCompare(b.rarity))
         .reverse()
@@ -102,7 +93,7 @@ export default function Panel() {
           }}
           className={styles.two__wrapper}
         >
-          {items.map(({ name, price, path, rarity }, index) => (
+          {items.map(({ name, price, path, rarity, type }, index) => (
             <ItemAside
               key={index}
               path={path}
@@ -110,6 +101,7 @@ export default function Panel() {
               price={price}
               rarity={rarity}
               width={256}
+              type={type}
             />
           ))}
         </div>

@@ -28,22 +28,20 @@
 
   &:first-child a {
     height: 348px;
-    width: 70%;
+    width: 1344px;
   }
 
   a {
     height: 187px;
-    width: 29%;
+    width: 370px;
   }
 
   &:first-child img {
     height: 348px;
-    width: 100%;
   }
 
   img {
-    height: 187px;
-    width: 100%;
+    height: 100%;
   }
 }
 
@@ -68,5 +66,151 @@
     position: absolute;
     right: 220px;
     bottom: 30px;
+  }
+}
+
+@media (max-width: 1360px) {
+  .wrapper {
+    padding: 42px 240px 42px 100px;
+
+    &:first-child {
+      padding: 38px 100px;
+    }
+
+    &:first-child a {
+      height: 348px - 50px;
+      width: 1344px - 150px;
+    }
+
+    a {
+      height: 187px - 25px;
+      width: 370px - 50px;
+    }
+
+    &:first-child img {
+      height: inherit;
+    }
+
+    img {
+      height: inherit;
+    }
+  }
+
+  .column {
+    & .title {
+      font-size: 20px;
+    }
+
+    & .text {
+      font-size: 14px;
+    }
+
+    & .author {
+      font-size: 16px;
+
+      right: 120px;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .wrapper {
+    padding: 42px 140px 42px 50px;
+
+    &:first-child {
+      padding: 30px 100px 30px 50px;
+    }
+
+    &:first-child a {
+      height: 348px - 150px;
+      width: 1344px - 550px;
+    }
+
+    a {
+      height: 187px - 65px;
+      width: 370px - 100px;
+    }
+  }
+
+  .column {
+    & .title {
+      font-size: 17px;
+    }
+
+    & .text {
+      font-size: 11px;
+    }
+
+    & .author {
+      font-size: 13px;
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .wrapper {
+    padding: 42px 140px 42px 50px;
+
+    &:first-child {
+      padding: 30px 100px 30px 50px;
+    }
+
+    &:first-child a {
+      height: 348px - 230px;
+      width: 1344px - 950px;
+    }
+
+    a {
+      height: 187px - 100px;
+      width: 370px - 170px;
+    }
+  }
+
+  .column {
+    & .title {
+      font-size: 13px;
+    }
+
+    & .text {
+      font-size: 8px;
+    }
+
+    & .author {
+      font-size: 10px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    padding: 22px 140px 22px 25px;
+
+    &:first-child {
+      padding: 30px 100px 30px 25px;
+    }
+
+    &:first-child a {
+      height: 348px - 230px;
+      width: 1344px - 950px;
+    }
+
+    a {
+      height: 187px - 100px;
+      width: 370px - 170px;
+    }
+  }
+
+  .column {
+    & .title {
+      font-size: 11px;
+    }
+
+    & .text {
+      font-size: 7px;
+    }
+
+    & .author {
+      font-size: 8px;
+    }
   }
 }

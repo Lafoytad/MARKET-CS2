@@ -7,14 +7,43 @@ import Tooltip from "@/app/components/atoms/tooltip/Tooltip";
 
 import { valueBuy, vis } from "@/app/store/slice/slice";
 import { useDispatch } from "react-redux";
+import { useMediaQuery } from "react-responsive";
 
 export default function ItemPrice(props) {
   //* props.path/name/price/info1/info2/info3/rarity/collection/type/width?/discount?/X/Y/icon/caseOn?(является ли кейсом или капсулой)/itemsTooltip/url?/textUrl?/thing(если оружие)
 
+  const isMobileSmall = useMediaQuery({ query: "(max-width: 650px)" });
+  const isMobile = useMediaQuery({
+    query: "(min-width: 651px) and (max-width: 1000px)",
+  });
+
+  const useResponsiveValue = () => {
+    const isMobileSmall = useMediaQuery({ query: "(max-width: 650px)" });
+    const isMobile = useMediaQuery({
+      query: "(min-width: 651px) and (max-width: 1000px)",
+    });
+    const isTablet = useMediaQuery({
+      query: "(min-width: 1001px) and (max-width: 1360px)",
+    });
+    const isDesktop = useMediaQuery({ query: "(min-width: 1360px)" });
+
+    if (isMobileSmall) {
+      return 60;
+    } else if (isMobile) {
+      return 80;
+    } else if (isTablet) {
+      return 120;
+    } else if (isDesktop) {
+      return 175;
+    }
+  };
+
+  const widthMedia = useResponsiveValue();
+
   // const count = useSelector((state) => state.counter.value);
   const dispatch = useDispatch();
 
-  const width = props.width || 160;
+  const width = props.width || widthMedia;
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -126,7 +155,7 @@ export default function ItemPrice(props) {
             ...(props.url || props.textUrl
               ? {}
               : {
-                  height: "28px",
+                  height: isMobile || isMobileSmall ? "" : "28px",
                 }),
           }}
         >

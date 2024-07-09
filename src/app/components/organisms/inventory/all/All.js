@@ -126,7 +126,6 @@ export default function Home() {
                     rarity={rarity}
                     collection={collection}
                     type={type}
-                    width={175}
                     discount={50}
                     X={X}
                     Y={Y}
@@ -169,7 +168,6 @@ export default function Home() {
                     rarity={rarity}
                     collection={collection}
                     type={type}
-                    width={175}
                     discount={50}
                     X={X}
                     Y={Y}
@@ -212,7 +210,6 @@ export default function Home() {
                     rarity={rarity}
                     collection={collection}
                     type={type}
-                    width={175}
                     discount={50}
                     X={X}
                     Y={Y}
@@ -255,7 +252,6 @@ export default function Home() {
                     rarity={rarity}
                     collection={collection}
                     type={type}
-                    width={175}
                     discount={50}
                     X={X}
                     Y={Y}
@@ -298,7 +294,6 @@ export default function Home() {
                     rarity={rarity}
                     collection={collection}
                     type={type}
-                    width={175}
                     discount={50}
                     X={X}
                     Y={Y}

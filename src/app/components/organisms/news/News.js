@@ -12,7 +12,12 @@ export default async function News() {
         <div className={styles.wrapper} key={index}>
           <div className={styles.fone}></div>
           <a href={url} target="_blank">
-            <Image src={background} alt="background" />
+            <Image
+              height={350}
+              width={1200}
+              src={background}
+              alt="background"
+            />
           </a>
           <div className={styles.column}>
             <p className={styles.title}>{title}</p>

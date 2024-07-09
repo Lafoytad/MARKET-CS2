@@ -32,3 +32,27 @@
 .activeHome {
   background-image: url("/icons/home_iconHover.png");
 }
+
+@media (max-width: 600px) {
+  .icons {
+    top: 127%;
+    left: 0px;
+
+    ul {
+      height: 35px;
+      min-width: 35px;
+      display: flex;
+      gap: 45px;
+      display: flex;
+      li {
+        padding: 25px 20px;
+        width: 23px;
+        height: 24px;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+        background-size: 35px;
+      }
+    }
+  }
+}
