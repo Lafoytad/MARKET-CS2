@@ -4,10 +4,6 @@ export async function getAllData() {
   try {
     const response = await fetch(`${API_URL}/data`, {
       method: "GET",
-      headers: {
-        Authorization: `Bearer ${process.env.API_TOKEN}`,
-        "Content-Type": "application/json",
-      },
       cache: "force-cache",
     });
     if (!response.ok) {
@@ -35,10 +31,6 @@ export async function getAllPosts() {
   try {
     const response = await fetch(`${API_URL}/news`, {
       method: "GET",
-      headers: {
-        Authorization: `Bearer ${process.env.API_TOKEN}`,
-        "Content-Type": "application/json",
-      },
       next: { revalidate: 3600 },
     });
     if (!response.ok) {
