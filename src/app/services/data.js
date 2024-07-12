@@ -3,6 +3,7 @@ import { API_URL } from ".";
 export async function getAllData() {
   try {
     const response = await fetch(`${API_URL}/data`, {
+      method: "GET",
       headers: {
         Authorization: `Bearer ${process.env.API_TOKEN}`,
         "Content-Type": "application/json",
@@ -33,6 +34,7 @@ export async function getAllData() {
 export async function getAllPosts() {
   try {
     const response = await fetch(`${API_URL}/news`, {
+      method: "GET",
       headers: {
         Authorization: `Bearer ${process.env.API_TOKEN}`,
         "Content-Type": "application/json",
