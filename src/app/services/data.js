@@ -2,7 +2,13 @@ import { API_URL } from ".";
 
 export async function getAllData() {
   try {
-    const response = await fetch(`${API_URL}/data`, { cache: "force-cache" });
+    const response = await fetch(`${API_URL}/data`, {
+      headers: {
+        Authorization: `Bearer ${process.env.API_TOKEN}`,
+        "Content-Type": "application/json",
+      },
+      cache: "force-cache",
+    });
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -16,6 +22,10 @@ export async function getAllData() {
 export async function getAllPosts() {
   try {
     const response = await fetch(`${API_URL}/news`, {
+      headers: {
+        Authorization: `Bearer ${process.env.API_TOKEN}`,
+        "Content-Type": "application/json",
+      },
       next: { revalidate: 3600 },
     });
     if (!response.ok) {
