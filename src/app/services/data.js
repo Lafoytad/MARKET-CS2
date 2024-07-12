@@ -15,14 +15,23 @@ export async function getAllData() {
     return await response.json();
   } catch (error) {
     console.error("Error fetching data:", error);
-    return null; // Или верните значение по умолчанию, если необходимо
+    return {
+      avatars: {},
+      characters: {},
+      musicKits: {},
+      status: {},
+      base_weapons: {},
+      general: [],
+      capsules: [],
+      stickers: [],
+      cases: [],
+      items: [],
+    }; // Или верните значение по умолчанию, если необходимо
   }
 }
 
 export async function getAllPosts() {
   try {
-    console.log("API_URL:", API_URL);
-    console.log("API_TOKEN:", process.env.API_TOKEN);
     const response = await fetch(`${API_URL}/news`, {
       headers: {
         Authorization: `Bearer ${process.env.API_TOKEN}`,
@@ -36,6 +45,6 @@ export async function getAllPosts() {
     return await response.json();
   } catch (error) {
     console.error("Error fetching posts:", error);
-    return null; // Или верните значение по умолчанию, если необходимо
+    return []; // Или верните значение по умолчанию, если необходимо
   }
 }
