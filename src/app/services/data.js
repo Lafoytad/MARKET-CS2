@@ -21,6 +21,8 @@ export async function getAllData() {
 
 export async function getAllPosts() {
   try {
+    console.log("API_URL:", API_URL);
+    console.log("API_TOKEN:", process.env.API_TOKEN);
     const response = await fetch(`${API_URL}/news`, {
       headers: {
         Authorization: `Bearer ${process.env.API_TOKEN}`,
