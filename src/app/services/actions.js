@@ -1,17 +1,23 @@
 "use server";
 import { prisma } from "../lib/prisma";
-import { redirect } from "next/navigation";
 
 export async function createPost(data) {
   const { title, body } = data;
-  const post = await prisma.post.create({
-    data: {
-      title,
-      body,
-    },
-  });
 
-  return post;
+  if (!title || !body) {
+    throw new Error("Title and body are required");
+  }
 
-  //redirect(`/store/home${post}`);
+  try {
+    const post = await prisma.post.create({
+      data: {
+        title,
+        body,
+      },
+    });
+    return post;
+  } catch (error) {
+    console.error("Failed to create post", error);
+    throw new Error("Failed to create post");
+  }
 }

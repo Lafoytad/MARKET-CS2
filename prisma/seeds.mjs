@@ -22,12 +22,23 @@ const initialPosts = [
 ];
 
 const seed = async () => {
-  await prisma.post.deleteMany();
+  try {
+    console.log("Deleting existing posts...");
+    await prisma.post.deleteMany();
+    console.log("Existing posts deleted.");
 
-  for (const post of initialPosts) {
-    await prisma.post.create({
-      data: post,
-    });
+    for (const post of initialPosts) {
+      console.log(`Creating post: ${post.title}`);
+      await prisma.post.create({
+        data: post,
+      });
+    }
+
+    console.log("Seeding completed.");
+  } catch (error) {
+    console.error("Error seeding data:", error);
+  } finally {
+    await prisma.$disconnect();
   }
 };
 
