@@ -51,7 +51,12 @@ export default function CardBuy() {
       className={styles.card}
     >
       <div className={styles.wrapper}>
-        <Image width={30} height={30} src={"/icons/watch.png"}></Image>
+        <Image
+          width={30}
+          height={30}
+          src={"/icons/watch.png"}
+          alt="watch"
+        ></Image>
         <p className={styles.title}>Покупки</p>
       </div>
       <div className={styles.wrap}>
@@ -68,12 +73,13 @@ export default function CardBuy() {
               timeBuyhours,
               timeBuyMinutes,
               timeBuySeconds,
+              random,
             },
             index
           ) => (
             <div
               onClick={(e) => resetItem(index)}
-              key={index}
+              key={random}
               className={styles.row}
             >
               <p className={styles.time}>
@@ -84,7 +90,7 @@ export default function CardBuy() {
                 {timeBuyMinutes <= 9 ? `0${timeBuyMinutes}` : timeBuyMinutes}:
                 {timeBuySeconds <= 9 ? `0${timeBuySeconds}` : timeBuySeconds}
               </p>
-              <Image width={40} height={40} src={path}></Image>
+              <Image width={40} height={40} src={path} alt="#"></Image>
               {name ? (
                 <p className={styles.text}>
                   {type.length > 15 ? type.substring(0, 15) + "..." : type} |{" "}

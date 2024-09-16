@@ -57,7 +57,7 @@ export default function Tooltip(props) {
       // height право
       setYY(props.buttom ? width - props.buttom : width * 1.44);
     }
-  }, [props.X, props.Y]);
+  }, [props.X, props.Y, props.buttom, props.left, width]);
 
   useEffect(() => {
     if (props.transition) {
@@ -65,7 +65,7 @@ export default function Tooltip(props) {
     } else {
       setHover(props.isHovered);
     }
-  }, [props.isHovered]); // доп
+  }, [props.isHovered, props.transition]); // доп
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -80,7 +80,7 @@ export default function Tooltip(props) {
     } else {
       setHover(false);
     }
-  }, [isHovered]);
+  }, [isHovered, props.transition]);
 
   const [Hover, setHover] = useState(false);
 
@@ -187,7 +187,7 @@ export default function Tooltip(props) {
                         >
                           {props.name == name ? (
                             <span>
-                              <img
+                              <Image
                                 src="/icons/star.png"
                                 alt="marker star"
                                 width="14"
@@ -215,7 +215,7 @@ export default function Tooltip(props) {
                         >
                           {props.name == name ? (
                             <span>
-                              <img
+                              <Image
                                 src="/icons/star.png"
                                 alt="marker star"
                                 width="14"
@@ -242,7 +242,7 @@ export default function Tooltip(props) {
                         >
                           {props.name == name ? (
                             <span>
-                              <img
+                              <Image
                                 src="/icons/star.png"
                                 alt="marker star"
                                 width="14"

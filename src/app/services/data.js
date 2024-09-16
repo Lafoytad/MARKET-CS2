@@ -23,7 +23,7 @@ export async function getAllData() {
       stickers: [],
       cases: [],
       items: [],
-    }; // Или верните значение по умолчанию, если необходимо
+    };
   }
 }
 
@@ -39,6 +39,6 @@ export async function getAllPosts() {
     return await response.json();
   } catch (error) {
     console.error("Error fetching posts:", error);
-    return []; // Или верните значение по умолчанию, если необходимо
+    return [];
   }
 }

@@ -69,6 +69,7 @@ export default function ItemPrice(props) {
     const hours = now.getHours();
     const minutes = now.getMinutes();
     const seconds = now.getSeconds();
+    const random = Math.random();
 
     const itemJSON = {
       type: props.type ? props.type : "",
@@ -92,6 +93,7 @@ export default function ItemPrice(props) {
       timeBuyhours: hours,
       timeBuyMinutes: minutes,
       timeBuySeconds: seconds,
+      random: random,
     };
 
     const storedItems = JSON.parse(localStorage.getItem("itemsBuy")) || [];

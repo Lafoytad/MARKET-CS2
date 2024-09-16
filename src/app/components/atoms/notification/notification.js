@@ -1,5 +1,5 @@
 import styles from "./notification.module.scss";
-import React, { useMemo, useEffect, useState } from "react";
+import React, { useMemo, useEffect, useCallback } from "react";
 import { notification } from "antd";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -20,19 +20,18 @@ const MyNotification = () => {
 
   const [api, contextHolder] = notification.useNotification();
 
-  const openNotification = (placement) => {
-    api.info({
-      message: `Предмет в корзине за ${count[updatedIndex].price}$`,
-      description: (
-        <Context.Consumer>
-          {!count[updatedIndex].name
-            ? () => `${count[updatedIndex].type}`
-            : () => `${count[updatedIndex].type} | ${count[updatedIndex].name}`}
-        </Context.Consumer>
-      ),
-      placement,
-    });
-  };
+  const openNotification = useCallback(
+    (placement) => {
+      const item = count[updatedIndex];
+      api.info({
+        message: `Предмет в корзине за ${item.price}$`,
+        description: item.name ? `${item.type} | ${item.name}` : `${item.type}`,
+        placement,
+      });
+    },
+    [api, count, updatedIndex]
+  );
+
   const contextValue = useMemo(
     () => ({
       name: "Ant Design",
@@ -45,7 +44,7 @@ const MyNotification = () => {
       openNotification("bottomLeft");
       dispatch(vis());
     }
-  }, [count]);
+  }, [count, updatedIndex, visible, openNotification, dispatch]);
 
   return (
     <Context.Provider value={contextValue}>{contextHolder}</Context.Provider>

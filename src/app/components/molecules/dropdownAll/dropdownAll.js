@@ -26,9 +26,10 @@ export default function Dropdown() {
           width={18}
           height={18}
           src={"/icons/else.png"}
+          alt="else"
         />
         <p className={styles.textMain}>{dropdown}</p>
-        <Image width={18} height={12} src={"/icons/bottom.png"} />
+        <Image width={18} height={12} src={"/icons/bottom.png"} alt="bottom" />
         <div hidden={hidden} className={styles.blockTwo}>
           <p
             onClick={() => {

@@ -50,7 +50,7 @@ export default function NewsAndPopulars(props) {
         setItemsTooltip(data.items);
       } // props.item
     });
-  }, []);
+  }, [props.item]);
 
   const firstFiveItemsNewAndPopular = items.slice(0, 5);
   const firstFiveItemsCopenhagen = items.slice(0, 5);
@@ -63,15 +63,13 @@ export default function NewsAndPopulars(props) {
       <Link href={props.path} className={styles.more}>
         <p className={styles.text}>Ещё</p>
         <Image src={right} alt="help" />
-        {props.img == "/background/store_home_tournament.png" ? (
+        {props.img == "/background/store_home_tournament.png" && (
           <Image src={right} alt="help" />
-        ) : (
-          ""
         )}
       </Link>
       <div className={styles.content}>
         <p className={styles.title}>{props.title}</p>
-        {props.img == "/background/store_home_coupon.png" ? (
+        {props.img == "/background/store_home_coupon.png" && (
           <div className={styles.wrapper}>
             <MyNotification />
             {firstFiveItemsNewAndPopular.map(
@@ -113,10 +111,8 @@ export default function NewsAndPopulars(props) {
               )
             )}
           </div>
-        ) : (
-          ""
         )}
-        {props.img == "/background/store_home_tournament.png" ? (
+        {props.img == "/background/store_home_tournament.png" && (
           <div className={styles.wrapper}>
             {firstFiveItemsCopenhagen.map(
               (
@@ -156,8 +152,6 @@ export default function NewsAndPopulars(props) {
               )
             )}
           </div>
-        ) : (
-          ""
         )}
       </div>
     </section>

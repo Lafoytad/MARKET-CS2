@@ -21,16 +21,13 @@ export default function Weekly() {
       setItems2(data.items[random2]);
       setItems3(data.stickers[random3]);
       setItems4(data.cases[random4]);
-      console.log(data.items[random1]);
-      console.log(data.items[random2]);
-      console.log(data.stickers[random3]);
-      console.log(data.cases[random4]);
     });
   }, []);
 
   const [weeklySet, setWeeklySet] = useState("");
   const [weeklyItems, setWeeklyItems] = useState([]);
 
+  // сохраняет те же предметы, что и были при получении. А также на каких местах они находились
   useEffect(() => {
     const weekly = JSON.parse(sessionStorage.getItem("weeklySet")) || [];
     setWeeklySet(weekly);
@@ -81,6 +78,11 @@ export default function Weekly() {
             caseOn={items1.caseOn}
             num={"1"}
             thing={items1.thing}
+            info1={items1.info1}
+            info2={items1.info2}
+            info3={items1.info3}
+            collection={items1.collection}
+            icon={items1.icon}
           />
         </div>
         <div
@@ -116,6 +118,11 @@ export default function Weekly() {
             caseOn={items2.caseOn}
             num={"2"}
             thing={items2.thing}
+            info1={items2.info1}
+            info2={items2.info2}
+            info3={items2.info3}
+            collection={items2.collection}
+            icon={items2.icon}
           />
         </div>
         <div
@@ -151,6 +158,11 @@ export default function Weekly() {
             caseOn={items3.caseOn}
             num={"3"}
             thing={items3.thing}
+            info1={items3.info1}
+            info2={items3.info2}
+            info3={items3.info3}
+            collection={items3.collection}
+            icon={items3.icon}
           />
         </div>
         <div
@@ -186,6 +198,11 @@ export default function Weekly() {
             caseOn={items4.caseOn}
             num={"4"}
             thing={items4.thing}
+            info1={items4.info1}
+            info2={items4.info2}
+            info3={items4.info3}
+            collection={items4.collection}
+            icon={items4.icon}
           />
         </div>
       </div>

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Tooltip from "@/app/components/atoms/tooltip/Tooltip";
 import { useMediaQuery } from "react-responsive";
 
-export default function ItemPrice(props) {
+const ItemPrice = React.memo(function (props) {
   //* props.path/name/price/info1/info2/info3/rarity/collection/type/width?/discount?/X/Y/items/icon/transition/itemsTooltip/caseOn?(является ли кейсом или капсулой)/stickersTooltip(для наклеек и капсул)
   const useResponsiveValue = () => {
     const isMobileSmall = useMediaQuery({ query: "(max-width: 650px)" });
@@ -98,4 +98,8 @@ export default function ItemPrice(props) {
       />
     </div>
   );
-}
+});
+
+ItemPrice.displayName = "ItemPrice";
+
+export default ItemPrice;

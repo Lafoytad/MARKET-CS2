@@ -16,6 +16,7 @@ export default function CardBuy() {
     }, 150);
   }, []);
 
+  // удаление элемента при клике на него
   const resetItem = (index) => {
     const updatedItems = [...items];
     updatedItems.splice(index, 1);
@@ -23,6 +24,7 @@ export default function CardBuy() {
     localStorage.setItem("itemsBuy", JSON.stringify(updatedItems));
   };
 
+  // нажали купить
   const itemsLocal = () => {
     const storedItems = JSON.parse(localStorage.getItem("items")) || [];
 
@@ -61,20 +63,19 @@ export default function CardBuy() {
       className={styles.card}
     >
       <div className={styles.wrapper}>
-        <Image width={30} height={30} src={"/icons/shoppingcart.png"}></Image>
+        <Image
+          width={30}
+          height={30}
+          src={"/icons/shoppingcart.png"}
+          alt="shoppingcart"
+        ></Image>
         <p className={styles.title}>Корзина</p>
-        {items && items != 0 ? (
+        {items && items != 0 && (
           <p onClick={() => itemsLocal()} className={styles.buy}>
             Купить!
           </p>
-        ) : (
-          ""
         )}
-        {items && items != 0 ? (
-          <p className={styles.num}>{items.length}</p>
-        ) : (
-          ""
-        )}
+        {items && items != 0 && <p className={styles.num}>{items.length}</p>}
       </div>
       <div className={styles.wrap}>
         {items.map(
@@ -92,15 +93,16 @@ export default function CardBuy() {
               type,
               icon,
               caseOn,
+              random,
             },
             index
           ) => (
             <div
               onClick={(e) => resetItem(index)}
-              key={index}
+              key={random}
               className={styles.row}
             >
-              <Image width={40} height={40} src={path}></Image>
+              <Image width={40} height={40} src={path} alt="#"></Image>
               {name ? (
                 <p className={styles.text}>
                   {type.length > 15 ? type.substring(0, 15) + "..." : type} |{" "}

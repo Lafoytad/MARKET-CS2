@@ -2582,8 +2582,6 @@ export async function GET(request) {
 
     return new Response(JSON.stringify(data));
   } catch (error) {
-    // В случае ошибки возвращаем соответствующий статус и сообщение об ошибке
-
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
 

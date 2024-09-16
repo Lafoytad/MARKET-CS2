@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 
 export default function ItemFree(props) {
-  //* props.path/name/rarity/type/width?/caseOn?(является ли кейсом или капсулой)/num
+  //* props.path/name/rarity/type/width?/caseOn?(является ли кейсом или капсулой)/num/thing
 
   const useResponsiveValue = () => {
     const isMobileSmall = useMediaQuery({ query: "(max-width: 650px)" });
@@ -82,14 +82,12 @@ export default function ItemFree(props) {
       const hours = now.getHours();
       const minutes = now.getMinutes();
       const seconds = now.getSeconds();
+      const random = Math.random();
 
       const itemJSON = {
         type: props.type ? props.type : "",
         name: props.name ? props.name : "",
-        price: props.price,
-        discount: props.discount
-          ? (props.price - props.price * (props.discount / 100)).toFixed(2)
-          : props.price, // есть ли скидка discount(реальная цена покупки)
+        price: 0,
         rarity: props.rarity ? props.rarity : "",
         collection: props.collection ? props.collection : "",
         caseOn: props.caseOn ? props.caseOn : "",
@@ -105,6 +103,7 @@ export default function ItemFree(props) {
         timeBuyhours: hours,
         timeBuyMinutes: minutes,
         timeBuySeconds: seconds,
+        random: random,
       };
 
       const storedItems = JSON.parse(localStorage.getItem("items")) || [];

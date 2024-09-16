@@ -312,7 +312,7 @@ export default function Home() {
         </div>
       ) : (
         <div className={styles.center}>
-          <Image width={30} height={30} src={warning}></Image>
+          <Image width={30} height={30} src={warning} alt="#"></Image>
           <p>Не найдено предметов выбранной категории: Кейсы.</p>
         </div>
       )}

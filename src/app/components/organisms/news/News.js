@@ -3,6 +3,8 @@ import background from "/public/background/static.jpg";
 import Image from "next/image";
 import { getAllPosts } from "@/app/services/data";
 
+export const revalidate = 3600;
+
 export default async function News() {
   const news = await getAllPosts();
 
